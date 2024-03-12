@@ -1,6 +1,3 @@
-# Edit this configuration file toi define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   config,
   pkgs,
@@ -92,6 +89,10 @@
   # Packages
   nix.gc.automatic = true;
 
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfreePredicate = _: true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.erich = {
     isNormalUser = true;
@@ -99,21 +100,18 @@
     extraGroups = ["networkmanager" "wheel" "docker"];
     packages = with pkgs; [
       #  firefox
-      #  helix
+      #
     ];
   };
 
   home-manager.users.erich = {pkgs, ...}: {
     home.packages = [pkgs.firefox pkgs.helix pkgs.gforth pkgs.bitwarden pkgs.kicad pkgs.gitFull];
     programs.bash.enable = true;
-
+    #programs.vscode.enable = true;
     # The state version is required and should stay at the version you
     # originally installed.
     home.stateVersion = "23.11";
   };
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -122,6 +120,7 @@
     gitFull
     alejandra
     #  wget
+    vscode
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
