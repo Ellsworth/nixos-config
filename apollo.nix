@@ -34,7 +34,6 @@
   };
 
   boot.initrd.luks.devices."luks-7b10477c-1312-4b3a-81ab-d7369ef60444".device = "/dev/disk/by-uuid/7b10477c-1312-4b3a-81ab-d7369ef60444";
-  networking.hostName = "artemis"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
