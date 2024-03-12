@@ -14,40 +14,20 @@
     isNormalUser = true;
     description = "Erich Ellsworth";
     extraGroups = ["networkmanager" "wheel" "docker" "dialout"];
-    packages = with pkgs; [
-      firefox
-      kate
-
-      #  thunderbird
-    ];
-    shell = pkgs.nushell;
+    packages = with pkgs; [];
   };
 
   home-manager.users.erich = {pkgs, ...}: {
     home.packages = [
-      #pkgs.arduino-ide
+      # System Utilities
       pkgs.gitFull
-      pkgs.python3
-      pkgs.psst
-      #pkgs.discord
-      pkgs.bitwarden
+      pkgs.alejandra
 
       # Programming Languages
       pkgs.gforth
 
-      ## Rust
-      pkgs.rustc
-      pkgs.cargo
-      pkgs.rust-analyzer
-
       ## Editors
-      #      pkgs.vscode
       pkgs.helix
-      #pkgs.kwrite
-      pkgs.octaveFull
-
-      # Games
-      pkgs.prismlauncher
     ];
 
     programs.bash.enable = true;

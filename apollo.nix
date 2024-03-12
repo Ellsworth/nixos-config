@@ -8,6 +8,7 @@
     #./hardware-configuration.nix
 
     ./erich.nix
+    ./desktop.nix
     # home-manager
     <home-manager/nixos>
   ];
@@ -98,16 +99,14 @@
     isNormalUser = true;
     description = "Erich Ellsworth";
     extraGroups = ["networkmanager" "wheel" "docker"];
-    packages = with pkgs; [
-      #  firefox
-      #
-    ];
+    packages = with pkgs; [];
+    shell = pkgs.bash;
   };
 
   home-manager.users.erich = {pkgs, ...}: {
-    home.packages = [pkgs.firefox pkgs.helix pkgs.gforth pkgs.bitwarden pkgs.kicad pkgs.gitFull];
+    home.packages = [];
     programs.bash.enable = true;
-    #programs.vscode.enable = true;
+
     # The state version is required and should stay at the version you
     # originally installed.
     home.stateVersion = "23.11";
@@ -116,10 +115,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    gitFull
-    alejandra
-    #  wget
     vscode
   ];
 
