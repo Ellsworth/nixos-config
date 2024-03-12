@@ -11,7 +11,7 @@ in {
   imports = [
     /etc/nixos/hardware-configuration.nix
     <home-manager/nixos>
-    ./erich.nix
-    "./${hostname}.nix"
+    /home/erich/nixos-config/erich.nix
+    "/home/erich/nixos-config/${hostname}.nix"
   ];
 }

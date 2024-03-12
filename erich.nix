@@ -17,7 +17,7 @@
     packages = with pkgs; [
       firefox
       kate
-      alejandra
+
       #  thunderbird
     ];
     shell = pkgs.nushell;
@@ -25,7 +25,7 @@
 
   home-manager.users.erich = {pkgs, ...}: {
     home.packages = [
-      pkgs.arduino-ide
+      #pkgs.arduino-ide
       pkgs.gitFull
       pkgs.python3
       pkgs.psst
@@ -43,7 +43,7 @@
       ## Editors
       #      pkgs.vscode
       pkgs.helix
-
+      #pkgs.kwrite
       pkgs.octaveFull
 
       # Games

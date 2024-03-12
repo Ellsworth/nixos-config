@@ -29,12 +29,16 @@ git diff -U0 *.nix
 echo "NixOS Rebuilding..."
 
 # Rebuild, output simplified errors, log trackebacks
-sudo nixos-rebuild switch -I ./configuration.nix &>nixos-switch.log || (cat nixos-switch.log | grep --color error && false)
+sudo nixos-rebuild switch -I nixos-config=./configuration.nix &>nixos-switch.log || (cat nixos-switch.log | grep --color error && false)
+
 # Get current generation metadata
 current=$(nixos-rebuild list-generations | grep current)
 
+# Get hostname
+hostname=$(hostname)
+
 # Commit all changes witih the generation metadata
-git commit -am "$current"
+git commit -am "$hostname : $current"
 
 # Back to where you were
 popd

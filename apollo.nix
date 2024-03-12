@@ -1,4 +1,4 @@
-# Edit this configuration file to define what should be installed on
+# Edit this configuration file toi define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
@@ -8,32 +8,17 @@
 }: {
   imports = [
     # Include the results of the hardware scan.
-    /etc/nixos/hardware-configuration.nix
-    <home-manager/nixos>
+    #./hardware-configuration.nix
+
     ./erich.nix
+    # home-manager
+    <home-manager/nixos>
   ];
 
-  # Add nvme module (?)
-  boot.initrd.kernelModules = ["nvme"];
-
-  # NTFS Support
-  boot.supportedFilesystems = ["ntfs"];
-
   # Bootloader.
-  boot.loader = {
-    grub = {
-      enable = true;
-      devices = ["nodev"];
-      efiSupport = true;
-      useOSProber = true;
-    };
-    efi = {
-      efiSysMountPoint = "/boot";
-      canTouchEfiVariables = true;
-    };
-  };
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.initrd.luks.devices."luks-7b10477c-1312-4b3a-81ab-d7369ef60444".device = "/dev/disk/by-uuid/7b10477c-1312-4b3a-81ab-d7369ef60444";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -45,6 +30,9 @@
 
   # Set your time zone.
   time.timeZone = "America/Chicago";
+
+  # Set RTC to local time so Windows time is correct.
+  time.hardwareClockInLocalTime = true;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -64,18 +52,19 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the KDE Plasma Desktop Environment.
+  # Enable the GNOME Desktop Environment.
+  #services.xserver.displayManager.gdm.enable = true;
+  #services.xserver.desktopManager.gnome.enable = true;
+
+  # KDE Plasma 5 Desktop Environment
   services.xserver.displayManager.sddm.enable = true;
-  #services.xserver.desktopManager.plasma5.enable = true;
-  services.xserver.desktopManager.plasma6.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
 
   # Configure keymap in X11
-  #services.xserver = {
-  #  xkb = {
-  #    layout = "us";
-  #    variant = "";
-  #  };
-  #};
+  services.xserver = {
+    layout = "us";
+    xkbVariant = "";
+  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -97,10 +86,31 @@
     #media-session.enable = true;
   };
 
-  system.autoUpgrade.enable = true;
-
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
+
+  # Packages
+  nix.gc.automatic = true;
+
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users.erich = {
+    isNormalUser = true;
+    description = "Erich Ellsworth";
+    extraGroups = ["networkmanager" "wheel" "docker"];
+    packages = with pkgs; [
+      #  firefox
+      #  helix
+    ];
+  };
+
+  home-manager.users.erich = {pkgs, ...}: {
+    home.packages = [pkgs.firefox pkgs.helix pkgs.gforth pkgs.bitwarden pkgs.kicad pkgs.gitFull];
+    programs.bash.enable = true;
+
+    # The state version is required and should stay at the version you
+    # originally installed.
+    home.stateVersion = "23.11";
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -109,17 +119,10 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    gitFull
+    alejandra
     #  wget
-    docker-compose
-    discord
-    vscode
   ];
-
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -128,17 +131,21 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
+  services.auto-cpufreq.enable = true;
+  services.auto-cpufreq.settings = {
+    battery = {
+      governor = "powersave";
+      turbo = "never";
+    };
+    charger = {
+      governor = "performance";
+      turbo = "auto";
+    };
+  };
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-
-  virtualisation.docker = {
-    enable = true;
-    autoPrune.enable = true;
-    enableOnBoot = true;
-  };
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [22];
@@ -146,6 +153,12 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
+  # Enable docker.
+  virtualisation.docker = {
+    enable = true;
+    autoPrune.enable = true;
+    enableOnBoot = true;
+  };
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
