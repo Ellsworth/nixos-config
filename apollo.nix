@@ -50,11 +50,7 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the GNOME Desktop Environment.
-  #services.xserver.displayManager.gdm.enable = true;
-  #services.xserver.desktopManager.gnome.enable = true;
-
-  # KDE Plasma 5 Desktop Environment
+  # KDE Plasma Desktop Environment
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
 
@@ -115,7 +111,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vscode
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
