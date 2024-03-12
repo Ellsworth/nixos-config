@@ -26,7 +26,7 @@
   home-manager.users.erich = {pkgs, ...}: {
     home.packages = [
       pkgs.arduino-ide
-      pkgs.git
+      pkgs.gitFull
       pkgs.python3
       pkgs.psst
       #pkgs.discord
