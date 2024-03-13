@@ -9,6 +9,7 @@
 
     ./erich.nix
     ./desktop.nix
+    ./apollo-wg.nix
     # home-manager
     <home-manager/nixos>
   ];
