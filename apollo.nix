@@ -10,6 +10,7 @@
     ./erich.nix
     ./desktop.nix
     ./apollo-wg.nix
+    ./apollo-syncthing.nix
     # home-manager
     <home-manager/nixos>
   ];
