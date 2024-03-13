@@ -24,6 +24,7 @@
     home.packages = [
       # Music
       pkgs.psst
+      pkgs.vlc
 
       # Utilities
       pkgs.bitwarden

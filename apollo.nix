@@ -80,16 +80,6 @@
     #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  # Packages
-  nix.gc.automatic = true;
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.allowUnfreePredicate = _: true;
-
   home-manager.users.erich = {pkgs, ...}: {
     home.packages = [];
     programs.bash.enable = true;

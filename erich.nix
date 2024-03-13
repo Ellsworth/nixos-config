@@ -7,8 +7,22 @@
     <home-manager/nixos>
   ];
 
-  # Allow unfree packages.
+  # Enable garbage collector.
+  nix.gc.automatic = true;
+
+  # Optimise storage.
+  nix.optimise.automatic = true;
+
+  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfreePredicate = _: true;
+
+  # System-wide packages.
+  environment.systemPackages = with pkgs; [
+    pkgs.gitFull
+    pkgs.alejandra
+    pkgs.wget
+  ];
 
   users.users.erich = {
     isNormalUser = true;
@@ -19,10 +33,6 @@
 
   home-manager.users.erich = {pkgs, ...}: {
     home.packages = [
-      # System Utilities
-      pkgs.gitFull
-      pkgs.alejandra
-
       # Programming Languages
       pkgs.gforth
 
