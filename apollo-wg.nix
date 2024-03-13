@@ -5,7 +5,7 @@
   in {
     wg0 = {
       # [Interface] section -> Address
-      ips = ["10.75.130.74/32"];
+      ips = ["10.253.0.8/32"];
 
       # [Peer] section -> Endpoint:port
       listenPort = 51820;
