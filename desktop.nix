@@ -33,6 +33,8 @@
 
       # Programming
       pkgs.octaveFull
+      pkgs.x3270
+      pkgs.kitty
 
       # Games
       pkgs.prismlauncher
@@ -58,4 +60,11 @@
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
+
+  # Install fonts.
+  fonts.packages = with pkgs; [
+    intel-one-mono
+    ibm-plex
+    _3270font
+  ];
 }
