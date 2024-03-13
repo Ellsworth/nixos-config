@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Stolen from: https://gist.github.com/0atman/1a5133b842f929ba4c1e195ee67599d5
-#
+
 # I believe there are a few ways to do this:
 #
 #    1. My current way, using a minimal /etc/nixos/configuration.nix that just imports my config from my home directory (see it in the gist)
@@ -16,9 +16,6 @@ set -e
 
 # cd to your config dir
 pushd ~/nixos-config/
-
-# Edit your config
-#$EDITOR configuration.nix
 
 # Autoformat your nix files
 alejandra . >/dev/null
@@ -38,7 +35,7 @@ current=$(nixos-rebuild list-generations | grep current)
 hostname=$(hostname)
 
 # Commit all changes witih the generation metadata
-git commit -am "$hostname : $current"
+git commit -am "$hostname - $current"
 
 # Back to where you were
 popd
