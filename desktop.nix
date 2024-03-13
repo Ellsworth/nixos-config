@@ -28,6 +28,7 @@
       # Utilities
       pkgs.bitwarden
       pkgs.firefox
+      pkgs.discord
 
       # Programming
       pkgs.octaveFull
