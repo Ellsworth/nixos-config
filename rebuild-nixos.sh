@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 
+
 # Stolen from: https://gist.github.com/0atman/1a5133b842f929ba4c1e195ee67599d5
 #
 # I believe there are a few ways to do this:
@@ -27,8 +27,6 @@ alejandra . >/dev/null
 git diff -U0 *.nix
 
 echo "NixOS Rebuilding..."
-
-
 
 # Rebuild, output simplified errors, log trackebacks
 sudo nixos-rebuild switch &>nixos-switch.log || (cat nixos-switch.log | grep --color error && false)
