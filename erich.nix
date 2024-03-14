@@ -19,9 +19,14 @@
 
   # System-wide packages.
   environment.systemPackages = with pkgs; [
+    # Required for custom NixOS build script to work.
     pkgs.gitFull
     pkgs.alejandra
+
+    # System Utils.
     pkgs.wget
+    pkgs.killall
+    pkgs.htop
   ];
 
   users.users.erich = {
@@ -36,7 +41,7 @@
       # Programming Languages
       pkgs.gforth
 
-      ## Editors
+      # Editors
       pkgs.helix
     ];
 
