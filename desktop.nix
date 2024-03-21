@@ -6,6 +6,7 @@
 }: {
   imports = [
     <home-manager/nixos>
+    ./syncthing.nix
   ];
 
   # Allow unfree packages.
@@ -30,6 +31,7 @@
       pkgs.bitwarden
       pkgs.firefox
       pkgs.discord
+      pkgs.free42
 
       # Programming
       pkgs.octaveFull
@@ -51,6 +53,7 @@
         streetsidesoftware.code-spell-checker
         rust-lang.rust-analyzer
         yzhang.markdown-all-in-one
+        usernamehw.errorlens
       ];
     };
   };
