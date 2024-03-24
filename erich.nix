@@ -41,6 +41,9 @@
 
       ## Editors
       pkgs.helix
+
+      ## Tools
+      pkgs.htop
     ];
 
     programs.bash.enable = true;
