@@ -108,7 +108,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [pkgs.partition-manager];
+  environment.systemPackages = with pkgs; [];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -119,6 +119,9 @@
   # };
 
   # List services that you want to enable:
+
+  # Partition manager needs a daemon to work.
+  programs.partition-manager.enable = true;
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
