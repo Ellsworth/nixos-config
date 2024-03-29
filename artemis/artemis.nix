@@ -127,10 +127,15 @@
   services.openssh.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [22];
-  networking.firewall.allowedUDPPorts = [22];
+  networking.firewall.allowedTCPPorts = [22 5000];
+  networking.firewall.allowedUDPPorts = [22 5000];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+  # Allows for a device to serve it's nix cache. Port 5000(?)
+  services.nix-serve = {
+    enable = true;
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
