@@ -126,6 +126,8 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  boot.binfmt.emulatedSystems = ["aarch64-linux"];
+
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [22 5000];
   networking.firewall.allowedUDPPorts = [22 5000];
