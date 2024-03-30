@@ -37,6 +37,7 @@
       pkgs.octaveFull
       pkgs.x3270
       pkgs.kitty
+      pkgs.jetbrains.rust-rover
 
       # Games
       pkgs.prismlauncher
