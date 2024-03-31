@@ -37,6 +37,11 @@
       pkgs.octaveFull
       pkgs.x3270
       pkgs.kitty
+
+      pkgs.cargo
+      pkgs.rustc
+      pkgs.rustfmt
+      pkgs.clippy
       pkgs.jetbrains.rust-rover
 
       # Games

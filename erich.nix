@@ -44,6 +44,8 @@
 
       ## Tools
       pkgs.htop
+
+      pkgs.newsboat
     ];
 
     programs.bash.enable = true;
