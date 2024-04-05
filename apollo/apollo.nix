@@ -7,8 +7,8 @@
     # Include the results of the hardware scan.
     #./hardware-configuration.nix
 
-    ./erich.nix
-    ./desktop.nix
+    ../erich.nix
+    ../desktop.nix
     ./apollo-wg.nix
     ./apollo-syncthing.nix
     # home-manager

@@ -4,14 +4,12 @@
   options,
   ...
 }: let
-  hostname = "apollo"; # to alllow per-machine config
+  hostname = "artemis"; # to alllow per-machine config
 in {
   networking.hostName = hostname;
 
   imports = [
     /etc/nixos/hardware-configuration.nix
-    <home-manager/nixos>
-    /home/erich/nixos-config/erich.nix
-    "/home/erich/nixos-config/${hostname}.nix"
+    "/home/erich/nixos-config/${hostname}/${hostname}.nix"
   ];
 }

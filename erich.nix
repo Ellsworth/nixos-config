@@ -7,6 +7,9 @@
     <home-manager/nixos>
   ];
 
+  # Auto-upgrade system.
+  system.autoUpgrade.enable = true;
+
   # Enable garbage collector.
   nix.gc.automatic = true;
 
@@ -45,6 +48,11 @@
 
       # Editors
       pkgs.helix
+
+      ## Tools
+      pkgs.htop
+
+      pkgs.newsboat
     ];
 
     programs.bash.enable = true;
