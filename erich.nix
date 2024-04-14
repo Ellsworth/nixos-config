@@ -43,8 +43,6 @@
     home.packages = [
       # Programming Languages
       pkgs.gforth
-      pkgs.cargo
-      pkgs.rustc
 
       # Editors
       pkgs.helix

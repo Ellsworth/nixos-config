@@ -9,7 +9,8 @@
   imports = [
     <home-manager/nixos>
     ../erich.nix
-    ../desktop.nix
+    ../modules/desktop.nix
+    ../modules/vm.nix
   ];
 
   # Add nvme module (?)
@@ -109,6 +110,14 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [];
+
+  home-manager.users.erich = {pkgs, ...}: {
+    nixpkgs.config.allowUnfree = true;
+
+    home.packages = [
+      (pkgs.mumble.override {pulseSupport = true;})
+    ];
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
