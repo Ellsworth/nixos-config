@@ -9,8 +9,8 @@
   imports = [
     <home-manager/nixos>
     ../erich.nix
-    ../desktop.nix
-    ../vm.nix
+    ../modules/desktop.nix
+    ../modules/vm.nix
   ];
 
   # Add nvme module (?)
