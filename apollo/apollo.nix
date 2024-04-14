@@ -83,7 +83,9 @@
   };
 
   home-manager.users.erich = {pkgs, ...}: {
-    home.packages = [];
+    home.packages = [
+      pkgs.partition-manager
+    ];
     programs.bash.enable = true;
 
     # The state version is required and should stay at the version you
@@ -94,6 +96,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [];
+
+  programs.partition-manager.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
