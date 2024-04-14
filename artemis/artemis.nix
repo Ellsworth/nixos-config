@@ -147,6 +147,7 @@
   services.nix-serve = {
     enable = true;
   };
+  nixpkgs.config.secret-key-files = /home/erich/nixos-config/cache-priv-key.pem;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
