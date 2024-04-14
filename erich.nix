@@ -20,6 +20,8 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnfreePredicate = _: true;
 
+  nix.settings.experimental-features = ["nix-command"];
+
   # System-wide packages.
   environment.systemPackages = with pkgs; [
     # Required for custom NixOS build script to work.
