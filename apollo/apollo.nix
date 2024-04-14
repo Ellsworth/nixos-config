@@ -8,9 +8,13 @@
     #./hardware-configuration.nix
 
     ../erich.nix
-    ../desktop.nix
+
+    ../modules/desktop.nix
+
     ./apollo-wg.nix
     ./apollo-syncthing.nix
+    ../modules/remote-build-client.nix
+
     # home-manager
     <home-manager/nixos>
   ];
