@@ -11,13 +11,13 @@
       listenPort = 51820;
 
       # Path to the private key file.
-      privateKeyFile = "/home/erich/nixos-config/apollo-wg0.key";
+      privateKeyFile = "/home/erich/nixos-config/apollo/apollo-wg0.key";
 
       peers = [
         {
           # [Peer] section -> PublicKey
           publicKey = "u/iLQDIHNxt9T4Bdp2UioOrviCAPLJjoZgBnmvSFFgg=";
-          presharedKeyFile = "/home/erich/nixos-config/apollo-wg0-preshare.key";
+          presharedKeyFile = "/home/erich/nixos-config/apollo/apollo-wg0-preshare.key";
           allowedIPs = ["10.253.0.0/24"];
           endpoint = "${server_ip}:51820";
           persistentKeepalive = 300;

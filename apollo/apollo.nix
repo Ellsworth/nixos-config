@@ -11,7 +11,7 @@
 
     ../modules/desktop.nix
 
-    #    ./apollo-wg.nix
+    ./apollo-wg.nix
     ./apollo-syncthing.nix
     ../modules/remote-build-client.nix
 
