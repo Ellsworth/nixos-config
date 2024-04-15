@@ -11,7 +11,7 @@
 
     ../modules/desktop.nix
 
-    ./apollo-wg.nix
+    #    ./apollo-wg.nix
     ./apollo-syncthing.nix
     ../modules/remote-build-client.nix
 
@@ -87,9 +87,7 @@
   };
 
   home-manager.users.erich = {pkgs, ...}: {
-    home.packages = [
-      pkgs.partition-manager
-    ];
+    home.packages = [];
     programs.bash.enable = true;
 
     # The state version is required and should stay at the version you
@@ -124,8 +122,8 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-  programs.ssh.setXAuthLocation = true;
+  #services.openssh.enable = true;
+  #programs.ssh.setXAuthLocation = true;
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [22];
