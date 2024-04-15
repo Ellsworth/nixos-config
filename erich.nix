@@ -16,6 +16,9 @@
   # Optimise storage.
   nix.optimise.automatic = true;
 
+  # Consider users as trusted.
+  nix.trustedUsers = ["@wheel" "erich"];
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnfreePredicate = _: true;

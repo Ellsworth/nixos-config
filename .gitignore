@@ -1,3 +1,4 @@
 configuration.nix
 nixos-switch.log
 *.key
+*.pem
