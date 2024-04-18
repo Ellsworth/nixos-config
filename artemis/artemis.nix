@@ -116,6 +116,10 @@
 
     home.packages = [
       (pkgs.mumble.override {pulseSupport = true;})
+      pkgs.cargo
+      pkgs.rustc
+      pkgs.rustfmt
+      pkgs.clippy
     ];
   };
 
