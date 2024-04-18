@@ -66,4 +66,6 @@
     autoPrune.enable = true;
     enableOnBoot = true;
   };
+
+  services.tailscale.enable = true;
 }
