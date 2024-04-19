@@ -71,4 +71,8 @@
     autoPrune.enable = true;
     enableOnBoot = true;
   };
+
+  # Tailscale.
+  services.tailscale.enable = true;
+  services.tailscale.useRoutingFeatures = "both";
 }
