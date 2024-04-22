@@ -36,6 +36,8 @@
       # Programming
       pkgs.x3270
       pkgs.kitty
+      pkgs.platformio-core
+      pkgs.openocd
 
       # Games
       pkgs.prismlauncher

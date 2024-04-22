@@ -16,6 +16,9 @@
   # Optimise storage.
   nix.optimise.automatic = true;
 
+  # Enable TaliScale.
+  services.tailscale.enable = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnfreePredicate = _: true;
@@ -66,6 +69,4 @@
     autoPrune.enable = true;
     enableOnBoot = true;
   };
-
-  services.tailscale.enable = true;
 }
