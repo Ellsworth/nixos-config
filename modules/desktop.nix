@@ -38,6 +38,7 @@
       pkgs.kitty
       pkgs.platformio-core
       pkgs.openocd
+      pkgs.python3
 
       # Games
       pkgs.prismlauncher
