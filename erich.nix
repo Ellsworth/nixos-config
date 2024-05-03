@@ -17,7 +17,7 @@
   nix.optimise.automatic = true;
 
   # Consider users as trusted.
-  nix.trustedUsers = ["@wheel" "erich"];
+  nix.settings.trusted-users = ["@wheel" "erich"];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
