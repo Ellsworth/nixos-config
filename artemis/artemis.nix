@@ -73,7 +73,7 @@
   services.xserver.desktopManager.plasma5.enable = true;
   #services.desktopManager.plasma6.enable = true;
   # Hyprland WM
-  programs.hyprland.enable = true;
+  #programs.hyprland.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
