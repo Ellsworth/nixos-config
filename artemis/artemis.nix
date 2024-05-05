@@ -11,6 +11,7 @@
     ../erich.nix
     ../modules/desktop.nix
     ../modules/vm.nix
+    ../modules/syncthing-games.nix
   ];
 
   # Add nvme module (?)
