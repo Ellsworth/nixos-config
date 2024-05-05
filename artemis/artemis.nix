@@ -124,6 +124,7 @@
       pkgs.clippy
       pkgs.rust-analyzer
       pkgs.clang
+      pkgs.ryujinx
     ];
   };
 
