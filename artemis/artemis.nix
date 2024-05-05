@@ -126,6 +126,7 @@
       pkgs.rust-analyzer
       pkgs.clang
       pkgs.ryujinx
+      pkgs.cemu
     ];
   };
 
