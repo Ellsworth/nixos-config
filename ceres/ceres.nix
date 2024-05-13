@@ -40,7 +40,9 @@
   };
 
   home-manager.users.erich = {pkgs, ...}: {
-    home.packages = [];
+    home.packages = with pkgs; [
+      i2pd
+    ];
     programs.bash.enable = true;
 
     # The state version is required and should stay at the version you
