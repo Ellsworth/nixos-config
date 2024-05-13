@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   imports = [
@@ -66,6 +67,13 @@
   networking.firewall.allowedUDPPorts = [22];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+  # Possible fix for for "NetworkManager-wait-online.service failed"
+  #systemd.network.wait-online.enable = false;
+  #boot.initrd.systemd.network.wait-online.enable = false;
+  #systemd.services.systemd-udevd.restartIfChanged = false;
+  systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
+  systemd.services.systemd-networkd-wait-online.enable = lib.mkForce false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
