@@ -69,9 +69,6 @@
   # networking.firewall.enable = false;
 
   # Possible fix for for "NetworkManager-wait-online.service failed"
-  #systemd.network.wait-online.enable = false;
-  #boot.initrd.systemd.network.wait-online.enable = false;
-  #systemd.services.systemd-udevd.restartIfChanged = false;
   systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
   systemd.services.systemd-networkd-wait-online.enable = lib.mkForce false;
 
