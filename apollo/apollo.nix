@@ -28,9 +28,6 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
-  time.timeZone = "America/Chicago";
-
   # Set RTC to local time so Windows time is correct.
   time.hardwareClockInLocalTime = true;
 
