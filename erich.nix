@@ -78,4 +78,8 @@
   # Tailscale.
   services.tailscale.enable = true;
   services.tailscale.useRoutingFeatures = "both";
+
+  users.users."erich".openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG3yEyI+ih4/rc4tNcXOImlUUCMJ1n/h6DpjXTBAyiL9 kg5key@kg5key.com" # Artemis
+  ];
 }

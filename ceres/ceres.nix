@@ -9,7 +9,7 @@
     #./hardware-configuration.nix
 
     ../erich.nix
-    #../desktop.nix
+    ../modules/remotebuild.nix
     # home-manager
     <home-manager/nixos>
   ];
