@@ -25,6 +25,9 @@
 
   nix.settings.experimental-features = ["nix-command"];
 
+  # Automatically change the timezone.
+  services.automatic-timezoned.enable = true;
+
   # System-wide packages.
   environment.systemPackages = with pkgs; [
     # Required for custom NixOS build script to work.
