@@ -75,4 +75,9 @@
   # Tailscale.
   services.tailscale.enable = true;
   services.tailscale.useRoutingFeatures = "both";
+
+  services.chrony = {
+    enable = true;
+    servers = ["pool.ntp.org" "time.nist.gov" "10.253.0.102"];
+  };
 }

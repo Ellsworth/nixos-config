@@ -127,6 +127,7 @@
       pkgs.clang
       pkgs.ryujinx
       pkgs.cemu
+      pkgs.dolphinEmu
     ];
   };
 
