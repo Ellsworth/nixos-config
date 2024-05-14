@@ -11,6 +11,7 @@
     ../erich.nix
     ../modules/desktop.nix
     ../modules/vm.nix
+    ../modules/syncthing-games.nix
   ];
 
   # Add nvme module (?)
@@ -67,10 +68,10 @@
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
-
+  services.xserver.desktopManager.plasma5.enable = true;
+  #services.desktopManager.plasma6.enable = true;
   # Hyprland WM
-  programs.hyprland.enable = true;
+  #programs.hyprland.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -121,6 +122,9 @@
       pkgs.clippy
       pkgs.rust-analyzer
       pkgs.clang
+      pkgs.ryujinx
+      pkgs.cemu
+      pkgs.dolphinEmu
     ];
   };
 
