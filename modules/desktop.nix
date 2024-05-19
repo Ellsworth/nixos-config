@@ -31,6 +31,7 @@
       pkgs.bitwarden
       pkgs.firefox
       pkgs.discord
+      pkgs.vesktop
       pkgs.free42
 
       # Programming

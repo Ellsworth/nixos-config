@@ -11,6 +11,7 @@
     ../erich.nix
     ../modules/desktop.nix
     ../modules/vm.nix
+    ../modules/syncthing-games.nix
   ];
 
   # Add nvme module (?)
@@ -44,9 +45,6 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
-  time.timeZone = "America/Chicago";
-
   # Local timezone for dual-booting.
   time.hardwareClockInLocalTime = true;
 
@@ -69,9 +67,11 @@
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  # services.xserver.desktopManager.plasma5.enable = true;
-  services.xserver.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
+  #services.desktopManager.plasma6.enable = true;
+  # Hyprland WM
+  #programs.hyprland.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -116,6 +116,15 @@
 
     home.packages = [
       (pkgs.mumble.override {pulseSupport = true;})
+      pkgs.cargo
+      pkgs.rustc
+      pkgs.rustfmt
+      pkgs.clippy
+      pkgs.rust-analyzer
+      pkgs.clang
+      pkgs.ryujinx
+      pkgs.cemu
+      pkgs.dolphinEmu
     ];
   };
 
@@ -147,6 +156,7 @@
   services.nix-serve = {
     enable = true;
   };
+  nixpkgs.config.secret-key-files = /home/erich/nixos-config/cache-priv-key.pem;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

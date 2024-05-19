@@ -19,9 +19,17 @@
   # Enable TaliScale.
   services.tailscale.enable = true;
 
+  # Consider users as trusted.
+  nix.settings.trusted-users = ["@wheel" "erich"];
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnfreePredicate = _: true;
+
+  nix.settings.experimental-features = ["nix-command"];
+
+  # Automatically change the timezone.
+  services.automatic-timezoned.enable = true;
 
   # System-wide packages.
   environment.systemPackages = with pkgs; [
@@ -68,5 +76,21 @@
     enable = true;
     autoPrune.enable = true;
     enableOnBoot = true;
+  };
+
+  # Tailscale.
+  services.tailscale.enable = true;
+  services.tailscale.useRoutingFeatures = "both";
+
+  # SSH keys
+  users.users."erich".openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG3yEyI+ih4/rc4tNcXOImlUUCMJ1n/h6DpjXTBAyiL9 artemis"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICSVvYsapiP3wSXptz3D3y3VRtpB1SS8Os4Gfk5g4xaT ceres"
+  ];
+
+  # Chrony NTP Service
+  services.chrony = {
+    enable = true;
+    servers = ["pool.ntp.org" "time.nist.gov" "10.253.0.102"];
   };
 }
