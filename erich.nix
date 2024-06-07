@@ -16,8 +16,8 @@
   # Optimise storage.
   nix.optimise.automatic = true;
 
-  # Enable TaliScale.
-  services.tailscale.enable = true;
+  # Allow for updating of device firmware.
+  services.fwupd.enable = true;
 
   # Consider users as trusted.
   nix.settings.trusted-users = ["@wheel" "erich"];

@@ -32,6 +32,10 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # Solution from https://discourse.nixos.org/t/rebuild-error-failed-to-start-network-manager-wait-online/41977
+  systemd.network.wait-online.enable = false;
+  systemd.services.systemd-udevd.restartIfChanged = false;
+
   # Set RTC to local time so Windows time is correct.
   time.hardwareClockInLocalTime = true;
 
