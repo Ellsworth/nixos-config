@@ -16,6 +16,9 @@
   # Optimise storage.
   nix.optimise.automatic = true;
 
+  # Allow for updating of device firmware.
+  services.fwupd.enable = true;
+
   # Consider users as trusted.
   nix.settings.trusted-users = ["@wheel" "erich"];
 
