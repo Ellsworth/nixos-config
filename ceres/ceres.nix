@@ -42,7 +42,7 @@
 
   home-manager.users.erich = {pkgs, ...}: {
     home.packages = with pkgs; [
-      i2pd
+      #i2pd
     ];
     programs.bash.enable = true;
 

@@ -16,9 +16,6 @@
   # Optimise storage.
   nix.optimise.automatic = true;
 
-  # Enable TaliScale.
-  services.tailscale.enable = true;
-
   # Consider users as trusted.
   nix.settings.trusted-users = ["@wheel" "erich"];
 
