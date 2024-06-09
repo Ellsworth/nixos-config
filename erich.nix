@@ -86,6 +86,7 @@
   users.users."erich".openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG3yEyI+ih4/rc4tNcXOImlUUCMJ1n/h6DpjXTBAyiL9 artemis"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICSVvYsapiP3wSXptz3D3y3VRtpB1SS8Os4Gfk5g4xaT ceres"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILQ27ZwmB/SkEB/zfg3LuJJ/PMEyCGTz9qUfgsTUnoJ1 apollo"
   ];
 
   # Chrony NTP Service
