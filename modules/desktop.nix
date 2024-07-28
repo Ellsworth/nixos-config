@@ -46,6 +46,10 @@
 
       # Productivity
       pkgs.kicad
+
+      pkgs.libreoffice-qt
+      pkgs.hunspell
+      pkgs.hunspellDicts.en_US
     ];
 
     programs.bash.enable = true;
