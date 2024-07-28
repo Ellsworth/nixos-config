@@ -40,9 +40,12 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  # Allow reboot to apply changes.
+  system.autoUpgrade.allowReboot = true;
+
   home-manager.users.erich = {pkgs, ...}: {
     home.packages = with pkgs; [
-      i2pd
+      #i2pd
     ];
     programs.bash.enable = true;
 
