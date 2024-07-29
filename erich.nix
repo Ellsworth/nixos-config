@@ -35,7 +35,7 @@
   environment.systemPackages = with pkgs; [
     # Required for custom NixOS build script to work.
     pkgs.gitFull
-    pkgs.alejandra
+    pkgs.nixfmt
 
     # System Utils.
     pkgs.wget
