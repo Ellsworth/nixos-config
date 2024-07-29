@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{ config, pkgs, ... }: {
   imports = [
     ../erich.nix
     ../modules/desktop.nix
@@ -83,8 +79,8 @@
     #media-session.enable = true;
   };
 
-  home-manager.users.erich = {pkgs, ...}: {
-    home.packages = [];
+  home-manager.users.erich = { pkgs, ... }: {
+    home.packages = [ ];
     programs.bash.enable = true;
 
     # The state version is required and should stay at the version you
@@ -94,7 +90,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [];
+  environment.systemPackages = with pkgs; [ ];
 
   programs.partition-manager.enable = true;
 
@@ -123,8 +119,8 @@
   #programs.ssh.setXAuthLocation = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [22];
-  networking.firewall.allowedUDPPorts = [22];
+  networking.firewall.allowedTCPPorts = [ 22 ];
+  networking.firewall.allowedUDPPorts = [ 22 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 

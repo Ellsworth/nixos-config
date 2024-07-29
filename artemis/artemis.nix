@@ -1,11 +1,7 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{
-  config,
-  pkgs,
-  ...
-}: {
+{ config, pkgs, ... }: {
   imports = [
     <home-manager/nixos>
     ../erich.nix
@@ -15,16 +11,16 @@
   ];
 
   # Add nvme module (?)
-  boot.initrd.kernelModules = ["nvme"];
+  boot.initrd.kernelModules = [ "nvme" ];
 
   # NTFS Support
-  boot.supportedFilesystems = ["ntfs"];
+  boot.supportedFilesystems = [ "ntfs" ];
 
   # Bootloader.
   boot.loader = {
     grub = {
       enable = true;
-      devices = ["nodev"];
+      devices = [ "nodev" ];
       efiSupport = true;
       useOSProber = true;
     };
@@ -34,7 +30,8 @@
     };
   };
 
-  boot.initrd.luks.devices."luks-7b10477c-1312-4b3a-81ab-d7369ef60444".device = "/dev/disk/by-uuid/7b10477c-1312-4b3a-81ab-d7369ef60444";
+  boot.initrd.luks.devices."luks-7b10477c-1312-4b3a-81ab-d7369ef60444".device =
+    "/dev/disk/by-uuid/7b10477c-1312-4b3a-81ab-d7369ef60444";
   networking.hostName = "artemis"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -109,13 +106,13 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [];
+  environment.systemPackages = with pkgs; [ ];
 
-  home-manager.users.erich = {pkgs, ...}: {
+  home-manager.users.erich = { pkgs, ... }: {
     nixpkgs.config.allowUnfree = true;
 
     home.packages = [
-      (pkgs.mumble.override {pulseSupport = true;})
+      (pkgs.mumble.override { pulseSupport = true; })
       pkgs.cargo
       pkgs.rustc
       pkgs.rustfmt
@@ -144,18 +141,16 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-  boot.binfmt.emulatedSystems = ["aarch64-linux"];
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [22 5000];
-  networking.firewall.allowedUDPPorts = [22 5000];
+  networking.firewall.allowedTCPPorts = [ 22 5000 ];
+  networking.firewall.allowedUDPPorts = [ 22 5000 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
   # Allows for a device to serve it's nix cache. Port 5000(?)
-  services.nix-serve = {
-    enable = true;
-  };
+  services.nix-serve = { enable = true; };
   nixpkgs.config.secret-key-files = /home/erich/nixos-config/cache-priv-key.pem;
 
   # This value determines the NixOS release from which the default

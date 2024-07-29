@@ -1,11 +1,5 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
-  imports = [
-    <home-manager/nixos>
-  ];
+{ config, pkgs, ... }: {
+  imports = [ <home-manager/nixos> ];
 
   # Auto-upgrade system.
   system.autoUpgrade.enable = true;
@@ -20,13 +14,13 @@
   services.fwupd.enable = true;
 
   # Consider users as trusted.
-  nix.settings.trusted-users = ["@wheel" "erich"];
+  nix.settings.trusted-users = [ "@wheel" "erich" ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnfreePredicate = _: true;
 
-  nix.settings.experimental-features = ["nix-command"];
+  nix.settings.experimental-features = [ "nix-command" ];
 
   # Automatically change the timezone.
   services.automatic-timezoned.enable = true;
@@ -46,11 +40,11 @@
   users.users.erich = {
     isNormalUser = true;
     description = "Erich Ellsworth";
-    extraGroups = ["networkmanager" "wheel" "docker" "dialout"];
-    packages = with pkgs; [];
+    extraGroups = [ "networkmanager" "wheel" "docker" "dialout" ];
+    packages = with pkgs; [ ];
   };
 
-  home-manager.users.erich = {pkgs, ...}: {
+  home-manager.users.erich = { pkgs, ... }: {
     home.packages = [
       # Programming Languages
       pkgs.gforth
@@ -92,6 +86,6 @@
   # Chrony NTP Service
   services.chrony = {
     enable = true;
-    servers = ["pool.ntp.org" "time.nist.gov" "10.253.0.102"];
+    servers = [ "pool.ntp.org" "time.nist.gov" "10.253.0.102" ];
   };
 }

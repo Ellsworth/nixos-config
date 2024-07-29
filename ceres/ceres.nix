@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+{ config, pkgs, lib, ... }: {
   imports = [
     # Include the results of the hardware scan.
     #./hardware-configuration.nix
@@ -43,10 +38,11 @@
   # Allow reboot to apply changes.
   system.autoUpgrade.allowReboot = true;
 
-  home-manager.users.erich = {pkgs, ...}: {
-    home.packages = with pkgs; [
-      #i2pd
-    ];
+  home-manager.users.erich = { pkgs, ... }: {
+    home.packages = with pkgs;
+      [
+        #i2pd
+      ];
     programs.bash.enable = true;
 
     # The state version is required and should stay at the version you
@@ -56,7 +52,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [];
+  environment.systemPackages = with pkgs; [ ];
 
   # Run unpatched dynamic binaries on NixOS.
   programs.nix-ld.enable = true;
@@ -66,8 +62,8 @@
   programs.ssh.setXAuthLocation = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [22];
-  networking.firewall.allowedUDPPorts = [22];
+  networking.firewall.allowedTCPPorts = [ 22 ];
+  networking.firewall.allowedUDPPorts = [ 22 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 

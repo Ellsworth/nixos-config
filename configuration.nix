@@ -1,10 +1,5 @@
-{
-  config,
-  pkgs,
-  options,
-  ...
-}: let
-  hostname = "artemis"; # to alllow per-machine config
+{ config, pkgs, options, ... }:
+let hostname = "artemis"; # to alllow per-machine config
 in {
   networking.hostName = hostname;
 

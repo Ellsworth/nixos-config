@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{ config, pkgs, ... }: {
   nix.buildMachines = [
     #{
     #  hostName = "artemis";
@@ -26,8 +22,8 @@
       # systems = ["x86_64-linux" "aarch64-linux"];
       maxJobs = 1;
       speedFactor = 2;
-      supportedFeatures = ["big-parallel" "kvm"];
-      mandatoryFeatures = [];
+      supportedFeatures = [ "big-parallel" "kvm" ];
+      mandatoryFeatures = [ ];
     }
   ];
   nix.distributedBuilds = true;
@@ -36,5 +32,6 @@
     builders-use-substitutes = true
   '';
 
-  nix.settings.trusted-public-keys = ["artemis:Y4Bz+sblcfwMbaSb9OoPZ5OM5Xh8KGS3S8zuhkMJSCk="];
+  nix.settings.trusted-public-keys =
+    [ "artemis:Y4Bz+sblcfwMbaSb9OoPZ5OM5Xh8KGS3S8zuhkMJSCk=" ];
 }

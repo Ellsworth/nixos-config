@@ -1,13 +1,6 @@
 # This config defines some safe settings for a system installed with a GUI.
-{
-  config,
-  pkgs,
-  ...
-}: {
-  imports = [
-    <home-manager/nixos>
-    ./syncthing.nix
-  ];
+{ config, pkgs, ... }: {
+  imports = [ <home-manager/nixos> ./syncthing.nix ];
 
   # Allow unfree packages.
   nixpkgs.config.allowUnfree = true;
@@ -15,11 +8,11 @@
   users.users.erich = {
     isNormalUser = true;
     description = "Erich Ellsworth";
-    extraGroups = ["networkmanager" "wheel" "docker" "dialout"];
-    packages = with pkgs; [];
+    extraGroups = [ "networkmanager" "wheel" "docker" "dialout" ];
+    packages = with pkgs; [ ];
   };
 
-  home-manager.users.erich = {pkgs, ...}: {
+  home-manager.users.erich = { pkgs, ... }: {
     nixpkgs.config.allowUnfree = true;
 
     home.packages = [
@@ -67,14 +60,12 @@
 
   programs.steam = {
     enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    remotePlay.openFirewall =
+      true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall =
+      true; # Open ports in the firewall for Source Dedicated Server
   };
 
   # Install fonts.
-  fonts.packages = with pkgs; [
-    intel-one-mono
-    ibm-plex
-    _3270font
-  ];
+  fonts.packages = with pkgs; [ intel-one-mono ibm-plex _3270font ];
 }
