@@ -18,7 +18,7 @@ set -e
 pushd ~/nixos-config/
 
 # Autoformat your nix files
-alejandra . >/dev/null
+nixfmt **/*.nix
 
 # Shows your changes
 git diff -U0 *.nix

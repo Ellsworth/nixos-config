@@ -1,7 +1,8 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   imports = [
     <home-manager/nixos>
     ../erich.nix
@@ -30,8 +31,7 @@
     };
   };
 
-  boot.initrd.luks.devices."luks-7b10477c-1312-4b3a-81ab-d7369ef60444".device =
-    "/dev/disk/by-uuid/7b10477c-1312-4b3a-81ab-d7369ef60444";
+  boot.initrd.luks.devices."luks-7b10477c-1312-4b3a-81ab-d7369ef60444".device = "/dev/disk/by-uuid/7b10477c-1312-4b3a-81ab-d7369ef60444";
   networking.hostName = "artemis"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -108,22 +108,24 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [ ];
 
-  home-manager.users.erich = { pkgs, ... }: {
-    nixpkgs.config.allowUnfree = true;
+  home-manager.users.erich =
+    { pkgs, ... }:
+    {
+      nixpkgs.config.allowUnfree = true;
 
-    home.packages = [
-      (pkgs.mumble.override { pulseSupport = true; })
-      pkgs.cargo
-      pkgs.rustc
-      pkgs.rustfmt
-      pkgs.clippy
-      pkgs.rust-analyzer
-      pkgs.clang
-      pkgs.ryujinx
-      pkgs.cemu
-      pkgs.dolphinEmu
-    ];
-  };
+      home.packages = [
+        (pkgs.mumble.override { pulseSupport = true; })
+        pkgs.cargo
+        pkgs.rustc
+        pkgs.rustfmt
+        pkgs.clippy
+        pkgs.rust-analyzer
+        pkgs.clang
+        pkgs.ryujinx
+        pkgs.cemu
+        pkgs.dolphinEmu
+      ];
+    };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -144,13 +146,21 @@
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 22 5000 ];
-  networking.firewall.allowedUDPPorts = [ 22 5000 ];
+  networking.firewall.allowedTCPPorts = [
+    22
+    5000
+  ];
+  networking.firewall.allowedUDPPorts = [
+    22
+    5000
+  ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
   # Allows for a device to serve it's nix cache. Port 5000(?)
-  services.nix-serve = { enable = true; };
+  services.nix-serve = {
+    enable = true;
+  };
   nixpkgs.config.secret-key-files = /home/erich/nixos-config/cache-priv-key.pem;
 
   # This value determines the NixOS release from which the default

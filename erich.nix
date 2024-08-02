@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   imports = [ <home-manager/nixos> ];
 
   # Auto-upgrade system.
@@ -14,7 +15,10 @@
   services.fwupd.enable = true;
 
   # Consider users as trusted.
-  nix.settings.trusted-users = [ "@wheel" "erich" ];
+  nix.settings.trusted-users = [
+    "@wheel"
+    "erich"
+  ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -40,30 +44,37 @@
   users.users.erich = {
     isNormalUser = true;
     description = "Erich Ellsworth";
-    extraGroups = [ "networkmanager" "wheel" "docker" "dialout" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+      "dialout"
+    ];
     packages = with pkgs; [ ];
   };
 
-  home-manager.users.erich = { pkgs, ... }: {
-    home.packages = [
-      # Programming Languages
-      pkgs.gforth
+  home-manager.users.erich =
+    { pkgs, ... }:
+    {
+      home.packages = [
+        # Programming Languages
+        pkgs.gforth
 
-      # Editors
-      pkgs.helix
+        # Editors
+        pkgs.helix
 
-      ## Tools
-      pkgs.htop
+        ## Tools
+        pkgs.htop
 
-      pkgs.newsboat
-    ];
+        pkgs.newsboat
+      ];
 
-    programs.bash.enable = true;
+      programs.bash.enable = true;
 
-    # The state version is required and should stay at the version you
-    # originally installed.
-    home.stateVersion = "23.11";
-  };
+      # The state version is required and should stay at the version you
+      # originally installed.
+      home.stateVersion = "23.11";
+    };
 
   # Enable docker.
   virtualisation.docker = {
@@ -86,6 +97,10 @@
   # Chrony NTP Service
   services.chrony = {
     enable = true;
-    servers = [ "pool.ntp.org" "time.nist.gov" "10.253.0.102" ];
+    servers = [
+      "pool.ntp.org"
+      "time.nist.gov"
+      "10.253.0.102"
+    ];
   };
 }
