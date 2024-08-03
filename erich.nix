@@ -32,13 +32,13 @@
   # System-wide packages.
   environment.systemPackages = with pkgs; [
     # Required for custom NixOS build script to work.
-    pkgs.gitFull
-    pkgs.nixfmt
+    gitFull
+    nixfmt
 
     # System Utils.
-    pkgs.wget
-    pkgs.killall
-    pkgs.htop
+    wget
+    killall
+    htop
   ];
 
   users.users.erich = {
