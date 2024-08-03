@@ -1,10 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}:
-{
+{ config, pkgs, lib, ... }: {
   imports = [
     # Include the results of the hardware scan.
     #./hardware-configuration.nix
@@ -44,18 +38,17 @@
   # Allow reboot to apply changes.
   system.autoUpgrade.allowReboot = true;
 
-  home-manager.users.erich =
-    { pkgs, ... }:
-    {
-      home.packages = with pkgs; [
+  home-manager.users.erich = { pkgs, ... }: {
+    home.packages = with pkgs;
+      [
         #i2pd
       ];
-      programs.bash.enable = true;
+    programs.bash.enable = true;
 
-      # The state version is required and should stay at the version you
-      # originally installed.
-      home.stateVersion = "23.11";
-    };
+    # The state version is required and should stay at the version you
+    # originally installed.
+    home.stateVersion = "23.11";
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

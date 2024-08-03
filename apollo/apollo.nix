@@ -1,5 +1,4 @@
-{ config, pkgs, ... }:
-{
+{ config, pkgs, ... }: {
   imports = [
     ../erich.nix
     ../modules/desktop.nix
@@ -80,16 +79,14 @@
     #media-session.enable = true;
   };
 
-  home-manager.users.erich =
-    { pkgs, ... }:
-    {
-      home.packages = [ ];
-      programs.bash.enable = true;
+  home-manager.users.erich = { pkgs, ... }: {
+    home.packages = [ ];
+    programs.bash.enable = true;
 
-      # The state version is required and should stay at the version you
-      # originally installed.
-      home.stateVersion = "23.11";
-    };
+    # The state version is required and should stay at the version you
+    # originally installed.
+    home.stateVersion = "23.11";
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

@@ -1,6 +1,5 @@
 # services.syncthing.settings.devices
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   services = {
     syncthing = {
       folders = {
