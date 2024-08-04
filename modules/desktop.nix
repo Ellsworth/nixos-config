@@ -35,6 +35,9 @@
       pkgs.python3
 
       # Games
+      pkgs.chocolate-doom
+
+      # Games
       pkgs.prismlauncher
 
       # Productivity
