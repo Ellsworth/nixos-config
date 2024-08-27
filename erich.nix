@@ -1,33 +1,30 @@
-{ config, pkgs, ... }:
-{
+{ config, pkgs, ... }: {
   imports = [ <home-manager/nixos> ];
 
   # Auto-upgrade system.
   system.autoUpgrade.enable = true;
 
-  # Enable garbage collector.
-  nix.gc.automatic = true;
-
-  # Optimise storage.
-  nix.optimise.automatic = true;
-
-  # Allow for updating of device firmware.
-  services.fwupd.enable = true;
-
-  # Consider users as trusted.
-  nix.settings.trusted-users = [
-    "@wheel"
-    "erich"
-  ];
+  nix = {
+    gc.automatic = true;
+    optimise.automatic = true;
+    settings.experimental-features = [ "nix-command" ];
+    settings.trusted-users = [ "@wheel" "erich" ];
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnfreePredicate = _: true;
 
-  nix.settings.experimental-features = [ "nix-command" ];
-
   # Automatically change the timezone.
-  services.automatic-timezoned.enable = true;
+  services = {
+    automatic-timezoned.enable = true;
+    fwupd.enable = true; # Allow for updating of device firmware.
+    tailscale = {
+      enable = true;
+      useRoutingFeatures = "both";
+    };
+
+  };
 
   # System-wide packages.
   environment.systemPackages = with pkgs; [
@@ -44,37 +41,30 @@
   users.users.erich = {
     isNormalUser = true;
     description = "Erich Ellsworth";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "docker"
-      "dialout"
-    ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "dialout" ];
     packages = with pkgs; [ ];
   };
 
-  home-manager.users.erich =
-    { pkgs, ... }:
-    {
-      home.packages = [
-        # Programming Languages
-        pkgs.gforth
+  home-manager.users.erich = { pkgs, ... }: {
+    home.packages = [
+      # Programming Languages
+      pkgs.gforth
 
-        # Editors
-        pkgs.helix
+      # Editors
+      pkgs.helix
 
-        ## Tools
-        pkgs.htop
+      ## Tools
+      pkgs.htop
 
-        pkgs.newsboat
-      ];
+      pkgs.newsboat
+    ];
 
-      programs.bash.enable = true;
+    programs.bash.enable = true;
 
-      # The state version is required and should stay at the version you
-      # originally installed.
-      home.stateVersion = "23.11";
-    };
+    # The state version is required and should stay at the version you
+    # originally installed.
+    home.stateVersion = "23.11";
+  };
 
   # Enable docker.
   virtualisation.docker = {
@@ -82,10 +72,6 @@
     autoPrune.enable = true;
     enableOnBoot = true;
   };
-
-  # Tailscale.
-  services.tailscale.enable = true;
-  services.tailscale.useRoutingFeatures = "both";
 
   # SSH keys
   users.users."erich".openssh.authorizedKeys.keys = [
@@ -97,10 +83,7 @@
   # Chrony NTP Service
   services.chrony = {
     enable = true;
-    servers = [
-      "pool.ntp.org"
-      "time.nist.gov"
-      "10.253.0.102"
-    ];
+    servers = [ "pool.ntp.org" "time.nist.gov" "10.253.0.102" ];
+    extraConfig = "makestep 1 -1";
   };
 }

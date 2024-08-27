@@ -26,22 +26,15 @@
       pkgs.discord
       pkgs.vesktop
       pkgs.free42
+      pkgs.obsidian
 
       # Programming
       pkgs.x3270
       pkgs.kitty
-      pkgs.platformio-core
-      pkgs.openocd
-      pkgs.python3
-
-      # Games
-      pkgs.chocolate-doom
+      pkgs.uv
 
       # Games
       pkgs.prismlauncher
-
-      # Productivity
-      pkgs.kicad
 
       pkgs.libreoffice-qt
       pkgs.hunspell
