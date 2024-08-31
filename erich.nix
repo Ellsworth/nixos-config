@@ -5,7 +5,11 @@
   system.autoUpgrade.enable = true;
 
   nix = {
-    gc.automatic = true;
+    gc = {
+      automatic = true;
+      dates = "weekly"; 
+      options = "--delete-older-than 30d";
+    };
     optimise.automatic = true;
     settings.experimental-features = [ "nix-command" ];
     settings.trusted-users = [ "@wheel" "erich" ];
