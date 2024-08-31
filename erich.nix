@@ -50,17 +50,16 @@
   };
 
   home-manager.users.erich = { pkgs, ... }: {
-    home.packages = [
+    home.packages = with pkgs; [
       # Programming Languages
-      pkgs.gforth
+      gforth
 
       # Editors
-      pkgs.helix
+      helix
 
-      ## Tools
-      pkgs.htop
-
-      pkgs.newsboat
+      # Tools
+      htop
+      newsboat
     ];
 
     programs.bash.enable = true;
@@ -87,7 +86,7 @@
   # Chrony NTP Service
   services.chrony = {
     enable = true;
-    servers = [ "pool.ntp.org" "time.nist.gov" "10.253.0.102" ];
+    servers = [ "pool.ntp.org" "time.nist.gov" ];
     extraConfig = "makestep 1 -1";
   };
 }
