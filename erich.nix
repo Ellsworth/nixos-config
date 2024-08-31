@@ -7,7 +7,7 @@
   nix = {
     gc = {
       automatic = true;
-      dates = "weekly"; 
+      dates = "weekly";
       options = "--delete-older-than 30d";
     };
     optimise.automatic = true;
