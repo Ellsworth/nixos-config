@@ -15,12 +15,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
   # Enable networking
   networking.networkmanager.enable = true;
 
@@ -94,30 +88,11 @@
   environment.systemPackages = with pkgs; [ ];
 
   programs.partition-manager.enable = true;
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-  #services.auto-cpufreq.enable = true;
-  #services.auto-cpufreq.settings = {
-  #  battery = {
-  #    governor = "powersave";
-  #    turbo = "never";
-  #  };
-  #  charger = {
-  #    governor = "performance";
-  #    turbo = "auto";
-  #  };
-  #};
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  #services.openssh.enable = true;
-  #programs.ssh.setXAuthLocation = true;
+  services.openssh.enable = true;
+  programs.ssh.setXAuthLocation = true;
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 22 ];

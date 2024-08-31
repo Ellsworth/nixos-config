@@ -15,30 +15,30 @@
   home-manager.users.erich = { pkgs, ... }: {
     nixpkgs.config.allowUnfree = true;
 
-    home.packages = [
+    home.packages = with pkgs; [
       # Music
-      pkgs.psst
-      pkgs.vlc
+      psst
+      vlc
 
       # Utilities
-      pkgs.bitwarden
-      pkgs.firefox
-      pkgs.discord
-      pkgs.vesktop
-      pkgs.free42
-      pkgs.obsidian
+      bitwarden
+      firefox
+      discord
+      vesktop
+      free42
+      obsidian
 
       # Programming
-      pkgs.x3270
-      pkgs.kitty
-      pkgs.uv
+      x3270
+      kitty
+      uv
 
       # Games
-      pkgs.prismlauncher
+      prismlauncher
 
-      pkgs.libreoffice-qt
-      pkgs.hunspell
-      pkgs.hunspellDicts.en_US
+      libreoffice-qt
+      hunspell
+      hunspellDicts.en_US
     ];
 
     programs.bash.enable = true;

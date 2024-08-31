@@ -110,14 +110,8 @@
   home-manager.users.erich = { pkgs, ... }: {
     nixpkgs.config.allowUnfree = true;
 
-    home.packages = [
-      (pkgs.mumble.override { pulseSupport = true; })
-      pkgs.cargo
-      pkgs.rustc
-      pkgs.rustfmt
-      pkgs.clippy
-      pkgs.rust-analyzer
-      pkgs.clang
+    home.packages = with pkgs; [
+      (mumble.override { pulseSupport = true; })
       pkgs.ryujinx
       pkgs.cemu
       pkgs.dolphinEmu
