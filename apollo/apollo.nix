@@ -2,8 +2,10 @@
   imports = [
     ../erich.nix
     ../modules/desktop.nix
-    ./apollo-wg.nix
     ../modules/remote-build-client.nix
+
+    # Framework 13
+    <nixos-hardware/framework/13-inch/7040-amd>
 
     # home-manager
     <home-manager/nixos>
@@ -63,7 +65,6 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -101,17 +102,17 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-  services.auto-cpufreq.enable = true;
-  services.auto-cpufreq.settings = {
-    battery = {
-      governor = "powersave";
-      turbo = "never";
-    };
-    charger = {
-      governor = "performance";
-      turbo = "auto";
-    };
-  };
+  #services.auto-cpufreq.enable = true;
+  #services.auto-cpufreq.settings = {
+  #  battery = {
+  #    governor = "powersave";
+  #    turbo = "never";
+  #  };
+  #  charger = {
+  #    governor = "performance";
+  #    turbo = "auto";
+  #  };
+  #};
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.

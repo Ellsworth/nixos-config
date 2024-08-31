@@ -37,5 +37,7 @@ hostname=$(hostname)
 # Commit all changes witih the generation metadata
 git commit -am "$hostname - $current"
 
+git push
+
 # Back to where you were
 popd
