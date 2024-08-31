@@ -41,7 +41,5 @@ hostname=$(hostname)
 git commit -am "$hostname - $current"
 git push
 
-git push
-
 # Back to where you were
 popd
