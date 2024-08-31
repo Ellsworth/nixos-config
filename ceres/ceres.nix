@@ -4,7 +4,8 @@
     #./hardware-configuration.nix
 
     ../erich.nix
-    ../modules/remotebuild.nix
+    ../modules/remote-build-client.nix
+
     # home-manager
     <home-manager/nixos>
   ];
