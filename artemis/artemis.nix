@@ -82,7 +82,6 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -152,6 +151,8 @@
   # Allows for a device to serve it's nix cache. Port 5000(?)
   services.nix-serve = { enable = true; };
   nixpkgs.config.secret-key-files = /home/erich/nixos-config/cache-priv-key.pem;
+
+  systemd.services.NetworkManager-wait-online.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

@@ -1,12 +1,10 @@
 # services.syncthing.settings.devices
 { pkgs, ... }: {
   services = {
-    syncthing = {
-      folders = {
-        "games" = {
-          path = "/home/erich/Games";
-          devices = [ "vega" ];
-        };
+    syncthing.settings.folders = {
+      "games" = {
+        path = "/home/erich/Games";
+        devices = [ "Vega" ];
       };
     };
   };
