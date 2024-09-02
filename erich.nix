@@ -58,7 +58,6 @@
       helix
 
       # Tools
-      htop
       newsboat
     ];
 

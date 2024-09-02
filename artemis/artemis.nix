@@ -16,6 +16,9 @@
   # NTFS Support
   boot.supportedFilesystems = [ "ntfs" ];
 
+  # Run latest Linux kernel.
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   # Bootloader.
   boot.loader = {
     grub = {
