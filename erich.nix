@@ -40,6 +40,7 @@
     wget
     killall
     htop
+    fastfetch
   ];
 
   users.users.erich = {
