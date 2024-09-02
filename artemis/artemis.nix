@@ -10,14 +10,14 @@
     ../modules/syncthing-games.nix
   ];
 
+  # Run latest Linux kernel.
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   # Add nvme module (?)
   boot.initrd.kernelModules = [ "nvme" ];
 
   # NTFS Support
   boot.supportedFilesystems = [ "ntfs" ];
-
-  # Run latest Linux kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Bootloader.
   boot.loader = {
@@ -36,11 +36,6 @@
   boot.initrd.luks.devices."luks-7b10477c-1312-4b3a-81ab-d7369ef60444".device =
     "/dev/disk/by-uuid/7b10477c-1312-4b3a-81ab-d7369ef60444";
   networking.hostName = "artemis"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -144,10 +139,6 @@
   networking.firewall.allowedUDPPorts = [ 22 5000 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
-
-  # Allows for a device to serve it's nix cache. Port 5000(?)
-  services.nix-serve = { enable = true; };
-  nixpkgs.config.secret-key-files = /home/erich/nixos-config/cache-priv-key.pem;
 
   systemd.services.NetworkManager-wait-online.enable = false;
 

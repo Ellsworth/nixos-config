@@ -39,15 +39,16 @@
               "Vega"
               "Erich-PC"
               "Artemis"
+              "Apollo"
             ]; # Which devices to share the folder with
           };
           "music" = {
             path = "/home/erich/Music";
-            devices = [ "Vega" "Erich-PC" "Artemis" ];
+            devices = [ "Vega" "Erich-PC" "Artemis" "Apollo" ];
           };
           "pictures" = {
             path = "/home/erich/Pictures";
-            devices = [ "Vega" "Erich-PC" "Artemis" ];
+            devices = [ "Vega" "Erich-PC" "Artemis" "Apollo" ];
           };
         };
       };
