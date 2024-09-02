@@ -12,6 +12,9 @@
     packages = with pkgs; [ ];
   };
 
+  # Enable Flatpak
+  services.flatpak.enable = true;
+
   home-manager.users.erich = { pkgs, ... }: {
     nixpkgs.config.allowUnfree = true;
 
