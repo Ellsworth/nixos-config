@@ -63,10 +63,8 @@
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
+  services.desktopManager.plasma6.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
-  #services.desktopManager.plasma6.enable = true;
-  # Hyprland WM
-  #programs.hyprland.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -87,18 +85,13 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
   # Allow unfree packages
+  # TODO: Move this to erich.nix
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
@@ -129,16 +122,7 @@
   # Partition manager needs a daemon to work.
   programs.partition-manager.enable = true;
 
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
-
-  # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 22 5000 ];
-  networking.firewall.allowedUDPPorts = [ 22 5000 ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   systemd.services.NetworkManager-wait-online.enable = false;
 

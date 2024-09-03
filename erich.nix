@@ -19,10 +19,15 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnfreePredicate = _: true;
 
-  # Automatically change the timezone.
+
   services = {
+    # Automatically change the timezone.
     automatic-timezoned.enable = true;
-    fwupd.enable = true; # Allow for updating of device firmware.
+
+    # Utility to update device firmware.
+    fwupd.enable = true;
+
+    # Tailscale VPN
     tailscale = {
       enable = true;
       useRoutingFeatures = "both";
@@ -75,6 +80,17 @@
     autoPrune.enable = true;
     enableOnBoot = true;
   };
+
+  # Enable the OpenSSH daemon.
+  services.openssh = {
+    enable = true;
+    settings.PasswordAuthentication = false;
+  };
+  programs.ssh.setXAuthLocation = true;
+  
+  # Open ports in the firewall.
+  networking.firewall.allowedTCPPorts = [ 22 ];
+  networking.firewall.allowedUDPPorts = [ 22 ];
 
   # SSH keys
   users.users."erich".openssh.authorizedKeys.keys = [

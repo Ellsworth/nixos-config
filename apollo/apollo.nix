@@ -15,6 +15,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Enable bolt daemon to manager Thunderbolt devices.
   services.hardware.bolt.enable = true;
 
   # Enable networking
@@ -49,8 +50,6 @@
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
-  programs.hyprland.enable = true;
-
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
@@ -68,12 +67,6 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
 
   home-manager.users.erich = { pkgs, ... }: {
@@ -85,14 +78,13 @@
     home.stateVersion = "23.11";
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [ ];
-
-  programs.partition-manager.enable = true;
   # List services that you want to enable:
 
-  # Enable the OpenSSH daemon.
+  # KDE Partition manager
+  # TODO: Move all desktop env. stuff to desktop.nix, or create a kde.nix.
+  programs.partition-manager.enable = true;
+
+  ## Enable the OpenSSH daemon.
   services.openssh.enable = true;
   programs.ssh.setXAuthLocation = true;
 

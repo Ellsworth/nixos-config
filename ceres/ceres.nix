@@ -40,10 +40,6 @@
   system.autoUpgrade.allowReboot = true;
 
   home-manager.users.erich = { pkgs, ... }: {
-    home.packages = with pkgs;
-      [
-        #i2pd
-      ];
     programs.bash.enable = true;
 
     # The state version is required and should stay at the version you
@@ -51,20 +47,9 @@
     home.stateVersion = "23.11";
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [ ];
-
   # Run unpatched dynamic binaries on NixOS.
+  # TODO: Move this to erich.nix
   programs.nix-ld.enable = true;
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-  programs.ssh.setXAuthLocation = true;
-
-  # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 22 ];
-  networking.firewall.allowedUDPPorts = [ 22 ];
 
   # Possible fix for for "NetworkManager-wait-online.service failed"
   systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
