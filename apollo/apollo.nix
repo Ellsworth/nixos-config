@@ -15,6 +15,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  services.hardware.bolt.enable = true;
+
   # Enable networking
   networking.networkmanager.enable = true;
 
