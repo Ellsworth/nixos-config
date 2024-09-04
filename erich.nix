@@ -46,6 +46,7 @@
     killall
     htop
     fastfetch
+    distrobox
   ];
 
   users.users.erich = {
@@ -87,10 +88,6 @@
     settings.PasswordAuthentication = false;
   };
   programs.ssh.setXAuthLocation = true;
-  
-  # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 22 ];
-  networking.firewall.allowedUDPPorts = [ 22 ];
 
   # SSH keys
   users.users."erich".openssh.authorizedKeys.keys = [
@@ -98,6 +95,10 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICSVvYsapiP3wSXptz3D3y3VRtpB1SS8Os4Gfk5g4xaT ceres"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINgrQ68WfJgDpLPNCESP8ZuBpE13+C36Y1HVQ8u71bCT apollo"
   ];
+
+  # Open ports in the firewall.
+  networking.firewall.allowedTCPPorts = [ 22 ];
+  networking.firewall.allowedUDPPorts = [ 22 ];
 
   # Chrony NTP Service
   services.chrony = {

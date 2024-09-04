@@ -25,9 +25,6 @@
   systemd.network.wait-online.enable = false;
   systemd.services.systemd-udevd.restartIfChanged = false;
 
-  # Set RTC to local time so Windows time is correct.
-  time.hardwareClockInLocalTime = true;
-
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -89,6 +86,7 @@
   programs.ssh.setXAuthLocation = true;
 
   # Open ports in the firewall.
+  # TODO: Move this to erich.nix
   networking.firewall.allowedTCPPorts = [ 22 ];
   networking.firewall.allowedUDPPorts = [ 22 ];
   # Or disable the firewall altogether.

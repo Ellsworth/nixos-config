@@ -35,6 +35,7 @@
       x3270
       kitty
       uv
+      boxbuddy
 
       # Games
       prismlauncher
