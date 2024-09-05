@@ -18,8 +18,7 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnfreePredicate = _: true;
-
-
+  
   services = {
     # Automatically change the timezone.
     automatic-timezoned.enable = true;

@@ -2,16 +2,6 @@
 { config, pkgs, ... }: {
   imports = [ <home-manager/nixos> ./syncthing.nix ];
 
-  # Allow unfree packages.
-  nixpkgs.config.allowUnfree = true;
-
-  users.users.erich = {
-    isNormalUser = true;
-    description = "Erich Ellsworth";
-    extraGroups = [ "networkmanager" "wheel" "docker" "dialout" ];
-    packages = with pkgs; [ ];
-  };
-
   # Enable Flatpak
   services.flatpak.enable = true;
 
