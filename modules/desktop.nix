@@ -21,11 +21,11 @@
       free42
       obsidian
 
+      # KDE
+      francis
+
       # Programming
-      x3270
       kitty
-      uv
-      boxbuddy
 
       # Games
       prismlauncher
