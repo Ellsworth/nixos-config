@@ -44,6 +44,7 @@
         rust-lang.rust-analyzer
         yzhang.markdown-all-in-one
         usernamehw.errorlens
+        charliermarsh.ruff
       ];
     };
   };
