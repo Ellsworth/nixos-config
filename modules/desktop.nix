@@ -29,6 +29,7 @@
 
       # Games
       prismlauncher
+      lutris
 
       libreoffice-qt
       hunspell
