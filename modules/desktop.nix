@@ -21,15 +21,11 @@
       free42
       obsidian
 
-      # KDE
-      francis
-
       # Programming
       kitty
 
       # Games
       prismlauncher
-      lutris
 
       libreoffice-qt
       hunspell
@@ -49,6 +45,14 @@
       ];
     };
   };
+
+  # KDE packages
+  environment.systemPackages = with pkgs; [
+    kdePackages.yakuake
+
+    # Pomoduro
+    francis
+  ];
 
   # Temporary optimisations for gaming
   programs.gamemode.enable = true;

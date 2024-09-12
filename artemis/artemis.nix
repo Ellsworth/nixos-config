@@ -97,8 +97,7 @@
     home.packages = with pkgs; [
       (mumble.override { pulseSupport = true; })
       pkgs.ryujinx
-      pkgs.cemu
-      pkgs.dolphinEmu
+      lutris
     ];
   };
 
