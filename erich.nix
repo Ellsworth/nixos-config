@@ -52,7 +52,7 @@
   users.users.erich = {
     isNormalUser = true;
     description = "Erich Ellsworth";
-    extraGroups = [ "networkmanager" "wheel" "dialout" ];
+    extraGroups = [ "networkmanager" "wheel" "dialout" "gamemode"];
     packages = with pkgs; [ ];
   };
 
