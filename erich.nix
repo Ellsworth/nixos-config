@@ -38,7 +38,7 @@
   environment.systemPackages = with pkgs; [
     # Required for custom NixOS build script to work.
     gitFull
-    nixfmt
+    nixfmt-rfc-style
 
     # System Utils.
     wget
