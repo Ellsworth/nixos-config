@@ -1,5 +1,4 @@
-{ config, pkgs, ... }:
-{
+{ config, pkgs, ... }: {
   nix.buildMachines = [
     {
       hostName = "artemis";
@@ -10,10 +9,7 @@
       # systems = ["x86_64-linux" "aarch64-linux"];
       maxJobs = 2;
       speedFactor = 2;
-      supportedFeatures = [
-        "big-parallel"
-        "kvm"
-      ];
+      supportedFeatures = [ "big-parallel" "kvm" ];
       mandatoryFeatures = [ ];
     }
 
@@ -26,10 +22,7 @@
       # systems = ["x86_64-linux" "aarch64-linux"];
       maxJobs = 1;
       speedFactor = 1;
-      supportedFeatures = [
-        "big-parallel"
-        "kvm"
-      ];
+      supportedFeatures = [ "big-parallel" "kvm" ];
       mandatoryFeatures = [ ];
     }
   ];
