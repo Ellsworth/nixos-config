@@ -4,7 +4,7 @@
   services = {
     syncthing.settings.folders = {
       "games" = {
-        path = "/home/erich/Games";
+        path = "/home/erich/Games/Emulators";
         devices = [ "Vega" ];
       };
     };
