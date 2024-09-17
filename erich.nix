@@ -1,5 +1,7 @@
 { config, pkgs, ... }: {
-  imports = [ <home-manager/nixos> ];
+  imports = [ <home-manager/nixos> 
+    modules/ssh.nix
+  ];
 
   # Auto-upgrade system.
   system.autoUpgrade.enable = true;
