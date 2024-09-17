@@ -42,14 +42,7 @@
   };
 
   # Enable the X11 windowing system.
-  #services.xserver.enable = true;
-  services.xserver = {
-    enable = true;
-    desktopManager = {
-      xterm.enable = false;
-      xfce.enable = true;
-    };
-  };
+  services.xserver.enable = true;
 
   # KDE Plasma Desktop Environment
   services.displayManager.sddm.enable = true;
