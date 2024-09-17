@@ -13,7 +13,7 @@
       options = "--delete-older-than 30d";
     };
     optimise.automatic = true;
-    settings.experimental-features = [ "nix-command" ];
+    settings.experimental-features = [ "nix-command" "flakes"];
     settings.trusted-users = [ "@wheel" "erich" ];
   };
 
@@ -54,7 +54,7 @@
   users.users.erich = {
     isNormalUser = true;
     description = "Erich Ellsworth";
-    extraGroups = [ "networkmanager" "wheel" "dialout" "gamemode"];
+    extraGroups = [ "networkmanager" "wheel" "dialout"];
     packages = with pkgs; [ ];
   };
 
