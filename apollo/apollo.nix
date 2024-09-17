@@ -84,17 +84,6 @@
   # TODO: Move all desktop env. stuff to desktop.nix, or create a kde.nix.
   programs.partition-manager.enable = true;
 
-  ## Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-  programs.ssh.setXAuthLocation = true;
-
-  # Open ports in the firewall.
-  # TODO: Move this to erich.nix
-  networking.firewall.allowedTCPPorts = [ 22 ];
-  networking.firewall.allowedUDPPorts = [ 22 ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
