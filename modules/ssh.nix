@@ -17,6 +17,10 @@
           hostname = "100.82.239.88";
           user = "root";
         };
+        apollo = {
+          hostname = "100.127.227.54";
+          user = "erich";
+        };
       };
     };
 
