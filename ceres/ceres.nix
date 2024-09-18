@@ -1,10 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}:
-{
+{ config, pkgs, lib, ... }: {
   imports = [
     # Include the results of the hardware scan.
     #./hardware-configuration.nix
@@ -41,15 +35,13 @@
   # Allow reboot to apply changes.
   system.autoUpgrade.allowReboot = true;
 
-  home-manager.users.erich =
-    { pkgs, ... }:
-    {
-      programs.bash.enable = true;
+  home-manager.users.erich = { pkgs, ... }: {
+    programs.bash.enable = true;
 
-      # The state version is required and should stay at the version you
-      # originally installed.
-      home.stateVersion = "23.11";
-    };
+    # The state version is required and should stay at the version you
+    # originally installed.
+    home.stateVersion = "23.11";
+  };
 
   # Run unpatched dynamic binaries on NixOS.
   # TODO: Move this to erich.nix

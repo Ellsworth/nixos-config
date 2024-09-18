@@ -1,5 +1,4 @@
-{ config, pkgs, ... }:
-{
+{ config, pkgs, ... }: {
   # Enable dconf (System Management Tool)
   programs.dconf.enable = true;
 
