@@ -96,6 +96,6 @@
   services.chrony = {
     enable = true;
     servers = [ "pool.ntp.org" "time.nist.gov" ];
-    extraConfig = "makestep 1 -1";
+    extraConfig = "makestep 0.1 1";
   };
 }

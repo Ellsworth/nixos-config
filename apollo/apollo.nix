@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   imports = [
     ../erich.nix
     ../modules/desktop.nix
@@ -66,14 +67,16 @@
     pulse.enable = true;
   };
 
-  home-manager.users.erich = { pkgs, ... }: {
-    home.packages = [ ];
-    programs.bash.enable = true;
+  home-manager.users.erich =
+    { pkgs, ... }:
+    {
+      home.packages = [ ];
+      programs.bash.enable = true;
 
-    # The state version is required and should stay at the version you
-    # originally installed.
-    home.stateVersion = "23.11";
-  };
+      # The state version is required and should stay at the version you
+      # originally installed.
+      home.stateVersion = "23.11";
+    };
 
   # List services that you want to enable:
 
