@@ -62,6 +62,7 @@
     home.packages = with pkgs; [
       # Programming Languages
       gforth
+      uv
 
       # Editors
       helix
