@@ -34,29 +34,8 @@
     };
   };
 
-  boot.initrd.luks.devices."luks-7b10477c-1312-4b3a-81ab-d7369ef60444".device = "/dev/disk/by-uuid/7b10477c-1312-4b3a-81ab-d7369ef60444";
-  networking.hostName = "artemis"; # Define your hostname.
-
   # Enable networking
   networking.networkmanager.enable = true;
-
-  # Local timezone for dual-booting.
-  time.hardwareClockInLocalTime = true;
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -104,12 +83,7 @@
       ];
     };
 
-  # Partition manager needs a daemon to work.
-  programs.partition-manager.enable = true;
-
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
-
-  systemd.services.NetworkManager-wait-online.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

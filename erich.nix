@@ -1,10 +1,7 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, lib, ... }: {
   imports = [ <home-manager/nixos> 
     modules/ssh.nix
   ];
-
-  # Auto-upgrade system.
-  system.autoUpgrade.enable = true;
 
   nix = {
     gc = {
@@ -17,9 +14,15 @@
     settings.trusted-users = [ "@wheel" "erich" ];
   };
 
+  # Auto-upgrade system.
+  system.autoUpgrade.enable = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnfreePredicate = _: true;
+
+  # Run unpatched dynamic binaries on NixOS.
+  programs.nix-ld.enable = true;
   
   services = {
     # Automatically change the timezone.
@@ -56,6 +59,21 @@
     description = "Erich Ellsworth";
     extraGroups = [ "networkmanager" "wheel" "dialout"];
     packages = with pkgs; [ ];
+  };
+
+  # Select internationalisation properties.
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "en_US.UTF-8";
+    LC_IDENTIFICATION = "en_US.UTF-8";
+    LC_MEASUREMENT = "en_US.UTF-8";
+    LC_MONETARY = "en_US.UTF-8";
+    LC_NAME = "en_US.UTF-8";
+    LC_NUMERIC = "en_US.UTF-8";
+    LC_PAPER = "en_US.UTF-8";
+    LC_TELEPHONE = "en_US.UTF-8";
+    LC_TIME = "en_US.UTF-8";
   };
 
   home-manager.users.erich = { pkgs, ... }: {
@@ -99,4 +117,12 @@
     servers = [ "pool.ntp.org" "time.nist.gov" ];
     extraConfig = "makestep 0.1 1";
   };
+
+  # Possible fix for for "NetworkManager-wait-online.service failed"
+  systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
+  systemd.services.systemd-networkd-wait-online.enable = lib.mkForce false;
+
+  # Local timezone for dual-booting.
+  time.hardwareClockInLocalTime = true;
+
 }

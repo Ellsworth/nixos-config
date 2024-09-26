@@ -61,6 +61,9 @@
     francis
   ];
 
+  # Partition manager needs a daemon to work.
+  programs.partition-manager.enable = true;
+
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play

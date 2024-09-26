@@ -23,21 +23,6 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
-
   # Allow reboot to apply changes.
   system.autoUpgrade.allowReboot = true;
 
@@ -50,14 +35,6 @@
       # originally installed.
       home.stateVersion = "23.11";
     };
-
-  # Run unpatched dynamic binaries on NixOS.
-  # TODO: Move this to erich.nix
-  programs.nix-ld.enable = true;
-
-  # Possible fix for for "NetworkManager-wait-online.service failed"
-  systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
-  systemd.services.systemd-networkd-wait-online.enable = lib.mkForce false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
