@@ -30,6 +30,7 @@
         # Programming
         kitty
         octaveFull
+        arduino-ide
 
         # Games
         prismlauncher
