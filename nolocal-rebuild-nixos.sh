@@ -17,6 +17,9 @@ set -e
 # cd to your config dir
 pushd ~/nixos-config/
 
+# Pull latest changes
+git pull
+
 # Autoformat your nix files
 nixfmt **/*.nix
 
@@ -36,6 +39,7 @@ hostname=$(hostname)
 
 # Commit all changes witih the generation metadata
 git commit -am "$hostname - $current"
+git push
 
 # Back to where you were
 popd
