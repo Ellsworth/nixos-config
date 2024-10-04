@@ -122,9 +122,11 @@
     servers = [ "pool.ntp.org" "time.nist.gov" "100.75.40.55" "100.82.239.88" ];
     extraConfig = ''
       makestep 0.1 1
-      allow 100.0.0.0/8
+      allow
     '';
   };
+
+  networking.firewall.allowedUDPPorts = [ 123 ];
 
   # Possible fix for for "NetworkManager-wait-online.service failed"
   systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
