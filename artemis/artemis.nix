@@ -83,6 +83,11 @@
       ];
     };
 
+  services.ollama = {
+    enable = true;
+    acceleration = "rocm";
+  };
+
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   # This value determines the NixOS release from which the default
