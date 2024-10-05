@@ -36,8 +36,8 @@
       home.stateVersion = "23.11";
     };
 
-  # Proton Bridge
-  services.protonmail-bridge.enable = true;
+  # Expose NTP server.
+  networking.firewall.allowedUDPPorts = [ 123 ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

@@ -126,8 +126,6 @@
     '';
   };
 
-  networking.firewall.allowedUDPPorts = [ 123 ];
-
   # Possible fix for for "NetworkManager-wait-online.service failed"
   systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
   systemd.services.systemd-networkd-wait-online.enable = lib.mkForce false;
