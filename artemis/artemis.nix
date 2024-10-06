@@ -82,9 +82,6 @@
       ];
     };
 
-  # Expose NTP server.
-  networking.firewall.allowedUDPPorts = [ 123 ];
-
   services.ollama = {
     enable = true;
     acceleration = "rocm";
