@@ -35,6 +35,8 @@
         # Games
         prismlauncher
 
+        # Office
+        thunderbird
         libreoffice-qt
         hunspell
         hunspellDicts.en_US
