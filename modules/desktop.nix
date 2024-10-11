@@ -59,6 +59,7 @@
   # KDE packages
   environment.systemPackages = with pkgs; [
     kdePackages.yakuake
+    kdePackages.kcalc
 
     # Pomoduro
     francis
