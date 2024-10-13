@@ -6,6 +6,48 @@
     ./syncthing.nix
   ];
 
+  # Enable networking
+  networking.networkmanager.enable = true;
+
+  # Enable the KDE Plasma Desktop Environment.
+  services.displayManager.sddm.enable = true;
+  services.desktopManager.plasma6.enable = true;
+
+  # Enable and configure keymap in X11
+  services.xserver = {
+    xkb = {
+      layout = "us";
+      variant = "";
+    };
+    enable = true;
+  };
+
+  # Enable CUPS to print documents.
+  services.printing.enable = true;
+
+  # Enable sound with pipewire.
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
+
+  # KDE packages
+  environment.systemPackages = with pkgs; [
+    kdePackages.yakuake
+    kdePackages.kcalc
+    kdePackages.konversation
+
+    # Pomoduro
+    francis
+  ];
+
+  # Partition manager needs a daemon to work.
+  programs.partition-manager.enable = true;
+
   # Enable Flatpak
   services.flatpak.enable = true;
 
@@ -55,19 +97,6 @@
         ];
       };
     };
-
-  # KDE packages
-  environment.systemPackages = with pkgs; [
-    kdePackages.yakuake
-    kdePackages.kcalc
-    kdePackages.konversation
-
-    # Pomoduro
-    francis
-  ];
-
-  # Partition manager needs a daemon to work.
-  programs.partition-manager.enable = true;
 
   programs.steam = {
     enable = true;
