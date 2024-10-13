@@ -60,6 +60,7 @@
   environment.systemPackages = with pkgs; [
     kdePackages.yakuake
     kdePackages.kcalc
+    kdePackages.konversation
 
     # Pomoduro
     francis
