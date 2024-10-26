@@ -5,6 +5,8 @@
   ...
 }:
 {
+
+  nixpkgs.crossSystem.system = "aarch64-linux";
   imports = [
     # Include the results of the hardware scan.
     #./hardware-configuration.nix
@@ -20,6 +22,13 @@
     #    <nixos-hardware/raspberry-pi/3>
   ];
 
+  #nixpkgs.overlays = [
+  #  (final: super: {
+  #    makeModulesClosure = x:
+  #      super.makeModulesClosure (x // { allowMissing = true; });
+  #  })
+  #];
+
   sdImage.compressImage = false;
 
   # NixOS wants to enable GRUB by default
@@ -27,7 +36,8 @@
   # Enables the generation of /boot/extlinux/extlinux.conf
   boot.loader.generic-extlinux-compatible.enable = true;
 
-  nixpkgs.crossSystem.system = "aarch64-linux";
+  #nixpkgs.crossSystem.system = "aarch64-linux";
+  #nixpkgs.hostPlatform.system = "aarch64-linux";
 
   # Enable networking
   networking.networkmanager.enable = true;
