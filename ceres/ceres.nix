@@ -26,6 +26,9 @@
   # Allow reboot to apply changes.
   system.autoUpgrade.allowReboot = true;
 
+  # Tailscale behavior
+  services.tailscale.useRoutingFeatures = "server";
+
   home-manager.users.erich =
     { pkgs, ... }:
     {

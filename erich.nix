@@ -32,10 +32,7 @@
     fwupd.enable = true;
 
     # Tailscale VPN
-    tailscale = {
-      enable = true;
-      useRoutingFeatures = "both";
-    };
+    tailscale.enable = true;
 
   };
 

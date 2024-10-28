@@ -20,6 +20,9 @@
   # Enable bolt daemon to manager Thunderbolt devices.
   services.hardware.bolt.enable = true;
 
+  # Tailscale behavior
+  services.tailscale.useRoutingFeatures = "client";
+
   home-manager.users.erich =
     { pkgs, ... }:
     {
