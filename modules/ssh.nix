@@ -24,6 +24,15 @@
           user = "git";
           hostname = "github.com";
         };
+        "eros" = {
+          user = "wqi7";
+          hostname = "eros.cs.txstate.edu";
+        };
+        "leap2" = {
+          user = "wqi7";
+          hostname = "leap2.txstate.edu";
+          proxyJump = "eros";
+        };
       };
     };
 
