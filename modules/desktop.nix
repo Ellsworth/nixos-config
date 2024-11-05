@@ -79,6 +79,7 @@
         kitty
         octaveFull
         arduino-ide
+        logisim-evolution
 
         # Games
         prismlauncher
