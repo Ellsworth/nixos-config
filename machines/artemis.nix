@@ -48,6 +48,7 @@
         pkgs.ryujinx
         lutris
         dolphin
+        melonDS
       ];
     };
 
