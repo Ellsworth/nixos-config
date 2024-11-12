@@ -70,7 +70,6 @@
         # Utilities
         bitwarden
         firefox
-        discord
         vesktop
         free42
         obsidian
