@@ -17,6 +17,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # RTC clock should be in local time.
+  time.hardwareClockInLocalTime = true;
+
   # Enable bolt daemon to manager Thunderbolt devices.
   services.hardware.bolt.enable = true;
 
