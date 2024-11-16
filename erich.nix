@@ -117,7 +117,7 @@
   # Chrony NTP Service
   services.chrony = {
     enable = true;
-    servers = [ "pool.ntp.org" "time.nist.gov" "100.75.40.55" "100.82.239.88" ];
+    servers = [ "pool.ntp.org" "time.nist.gov" "100.69.229.43" "100.82.239.88" ];
     extraConfig = ''
       makestep 1 -1
       allow 100.0.0.0/8

@@ -18,7 +18,7 @@
           hostname = "100.127.227.54";
         };
         artemis = {
-          hostname = "100.75.40.55";
+          hostname = "100.69.229.43";
         };
         "github.com" = {
           user = "git";

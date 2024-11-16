@@ -7,7 +7,7 @@
     <home-manager/nixos>
     ../erich.nix
     ../modules/desktop.nix
-    ../modules/vm.nix
+    #    ../modules/vm.nix
     ../modules/syncthing-games.nix
   ];
 
