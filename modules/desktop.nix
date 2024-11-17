@@ -72,7 +72,6 @@
         firefox
         vesktop
         free42
-        obsidian
 
         # Programming
         kitty
