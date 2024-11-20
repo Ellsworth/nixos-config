@@ -93,6 +93,7 @@
           yzhang.markdown-all-in-one
           usernamehw.errorlens
           charliermarsh.ruff
+          ms-vscode-remote.remote-containers
         ];
       };
     };
