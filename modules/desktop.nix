@@ -35,12 +35,6 @@
     pulse.enable = true;
   };
 
-  # Make sure that Nix doesn't impact system responsiveness.
-  nix = {
-    daemonCPUSchedPolicy = "idle";
-    daemonIOSchedClass = "idle";
-  };
-
   # KDE packages
   environment.systemPackages = with pkgs; [
     kdePackages.yakuake

@@ -12,6 +12,11 @@
     optimise.automatic = true;
     settings.experimental-features = [ "nix-command" "flakes"];
     settings.trusted-users = [ "@wheel" "erich" ];
+
+    # Make sure that Nix doesn't impact system responsiveness.
+    daemonCPUSchedPolicy = "idle";
+    daemonIOSchedClass = "idle";
+
   };
 
   # Auto-upgrade system.
