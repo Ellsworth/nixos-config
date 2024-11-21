@@ -68,7 +68,6 @@
         free42
 
         # Programming
-        kitty
         octaveFull
         arduino-ide
         logisim-evolution
