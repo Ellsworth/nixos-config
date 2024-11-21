@@ -9,7 +9,6 @@
     ../modules/desktop.nix
     #    ../modules/vm.nix
     ../modules/syncthing-games.nix
-    ../modules/hyprland.nix
   ];
 
   # Run latest Linux kernel.
