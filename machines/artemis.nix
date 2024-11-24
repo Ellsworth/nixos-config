@@ -57,6 +57,11 @@
     acceleration = "rocm";
   };
 
+  services.synergy = {
+    server.enable = true;
+    server.autoStart = true;
+  };
+
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   # Tailscale behavior
