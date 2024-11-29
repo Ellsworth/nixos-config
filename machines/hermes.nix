@@ -19,7 +19,7 @@
 
     # Pi 3 bits
     <nixpkgs/nixos/modules/installer/sd-card/sd-image-aarch64.nix>
-    #    <nixos-hardware/raspberry-pi/3>
+    <nixos-hardware/raspberry-pi/3>
   ];
 
   #nixpkgs.overlays = [
@@ -40,7 +40,7 @@
   #nixpkgs.hostPlatform.system = "aarch64-linux";
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  #networking.networkmanager.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
