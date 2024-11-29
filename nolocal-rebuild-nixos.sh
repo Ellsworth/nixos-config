@@ -29,7 +29,7 @@ git diff -U0 *.nix
 echo "NixOS Rebuilding..."
 
 # Rebuild, output simplified errors, log trackebacks
-sudo nixos-rebuild -j0 switch &>nixos-switch.log || (cat nixos-switch.log | grep --color error && false)
+sudo nixos-rebuild -j0 switch --upgrade &>nixos-switch.log || (cat nixos-switch.log | grep --color error && false)
 
 # Get current generation metadata
 current=$(nixos-rebuild list-generations | grep current)
