@@ -11,7 +11,7 @@
     # Include the results of the hardware scan.
     #./hardware-configuration.nix
 
-    ../erich.nix
+    #../erich.nix
     ../modules/remote-build-client.nix
 
     # home-manager
@@ -29,6 +29,17 @@
   #  })
   #];
 
+  users.users.erich = {
+    isNormalUser = true;
+    description = "Erich Ellsworth";
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "dialout"
+    ];
+    packages = with pkgs; [ ];
+  };
+
   sdImage.compressImage = false;
 
   # NixOS wants to enable GRUB by default
@@ -41,6 +52,24 @@
 
   # Enable networking
   #networking.networkmanager.enable = true;
+
+  # Enable the OpenSSH daemon.
+  services.openssh = {
+    enable = true;
+    settings.PasswordAuthentication = false;
+  };
+  programs.ssh.setXAuthLocation = true;
+
+  # SSH keys
+  users.users."erich".openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG3yEyI+ih4/rc4tNcXOImlUUCMJ1n/h6DpjXTBAyiL9 artemis"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICSVvYsapiP3wSXptz3D3y3VRtpB1SS8Os4Gfk5g4xaT ceres"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINgrQ68WfJgDpLPNCESP8ZuBpE13+C36Y1HVQ8u71bCT apollo"
+  ];
+
+  # Open ports in the firewall.
+  networking.firewall.allowedTCPPorts = [ 22 ];
+  networking.firewall.allowedUDPPorts = [ 22 ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
