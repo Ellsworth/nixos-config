@@ -56,6 +56,8 @@
     wget
     killall
     htop
+    btop
+    ncdu
     fastfetch
     distrobox
     podman-compose
