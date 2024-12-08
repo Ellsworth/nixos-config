@@ -45,8 +45,9 @@
 
       home.packages = with pkgs; [
         (mumble.override { pulseSupport = true; })
-        pkgs.ryujinx
+        ryujinx
         lutris
+        winetricks
         dolphin
         melonDS
       ];
