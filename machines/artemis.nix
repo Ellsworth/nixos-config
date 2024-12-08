@@ -36,7 +36,14 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [ ];
+  environment.systemPackages = with pkgs; [
+    (lutris.override {
+      extraPkgs = pkgs: [
+        winetricks
+        wine
+      ];
+    })
+  ];
 
   home-manager.users.erich =
     { pkgs, ... }:
@@ -46,8 +53,6 @@
       home.packages = with pkgs; [
         (mumble.override { pulseSupport = true; })
         ryujinx
-        lutris
-        winetricks
         dolphin
         melonDS
       ];
