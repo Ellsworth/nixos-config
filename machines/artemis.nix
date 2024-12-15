@@ -44,6 +44,7 @@
         xxd
       ];
     })
+    veracrypt
   ];
 
   home-manager.users.erich =
