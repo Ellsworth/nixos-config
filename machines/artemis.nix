@@ -40,7 +40,8 @@
     (lutris.override {
       extraPkgs = pkgs: [
         winetricks
-        wine
+        xdelta
+        xxd
       ];
     })
   ];
