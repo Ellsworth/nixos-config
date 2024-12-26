@@ -41,27 +41,35 @@
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
-  containers.protonmail-bridge = {
-    autoStart = true; # Automatically start the container on boot
-    ephemeral = false; # Keep the container's state between restarts
-    #bindMounts."/data" = {
-    #  hostPath = "/var/data"; # Bind a host directory to the container
-    #  isReadOnly = false;
-    #};
-
+  containers.nextcloud = {
+    autoStart = true;
     config =
-      { config, pkgs, ... }:
       {
-        # Basic system settings for the container
-        system.stateVersion = "23.05"; # Match the NixOS version
-        networking.hostName = "protonmail-bridge";
+        config,
+        pkgs,
+        lib,
+        ...
+      }:
+      {
 
-        # Enable a specific service in the container
         services.protonmail-bridge = {
           enable = true;
         };
 
-        # Add any additional configurations needed for the container
+        system.stateVersion = "23.11";
+
+        networking = {
+          firewall = {
+            enable = true;
+            allowedTCPPorts = [ 80 ];
+          };
+          # Use systemd-resolved inside the container
+          # Workaround for bug https://github.com/NixOS/nixpkgs/issues/162686
+          useHostResolvConf = lib.mkForce false;
+        };
+
+        services.resolved.enable = true;
+
       };
   };
 
