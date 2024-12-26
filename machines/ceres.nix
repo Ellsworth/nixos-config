@@ -41,38 +41,6 @@
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
-  containers.nextcloud = {
-    autoStart = true;
-    config =
-      {
-        config,
-        pkgs,
-        lib,
-        ...
-      }:
-      {
-
-        services.protonmail-bridge = {
-          enable = true;
-        };
-
-        system.stateVersion = "23.11";
-
-        networking = {
-          firewall = {
-            enable = true;
-            allowedTCPPorts = [ 80 ];
-          };
-          # Use systemd-resolved inside the container
-          # Workaround for bug https://github.com/NixOS/nixpkgs/issues/162686
-          useHostResolvConf = lib.mkForce false;
-        };
-
-        services.resolved.enable = true;
-
-      };
-  };
-
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
