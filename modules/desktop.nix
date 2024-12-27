@@ -80,6 +80,9 @@
         libreoffice-qt
         hunspell
         hunspellDicts.en_US
+
+        # Chat
+        retroshare
       ];
 
       programs.bash.enable = true;
