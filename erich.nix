@@ -118,8 +118,10 @@
       defaultNetwork.settings.dns_enabled = true;
     };
 
-    docker.enable = true;
-
+    docker = {
+      enable = true;
+      autoPrune.enable = true;
+    };
 
     oci-containers.backend = "podman";
   };
