@@ -45,6 +45,7 @@
     francis
 
     kitty # required for the default Hyprland config
+    waybar
   ];
 
   # Partition manager needs a daemon to work.
