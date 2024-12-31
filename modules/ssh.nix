@@ -20,6 +20,10 @@
         artemis = {
           hostname = "100.69.229.43";
         };
+        vesta = {
+          user = "ellsworth";
+          hostname = "100.111.15.81";
+        };
         "github.com" = {
           user = "git";
           hostname = "github.com";

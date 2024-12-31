@@ -43,10 +43,14 @@
 
     # Pomoduro
     francis
+
+    kitty # required for the default Hyprland config
   ];
 
   # Partition manager needs a daemon to work.
   programs.partition-manager.enable = true;
+
+  programs.hyprland.enable = true; # enable Hyprland
 
   # Enable Flatpak
   services.flatpak.enable = true;

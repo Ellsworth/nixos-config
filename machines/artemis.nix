@@ -70,10 +70,6 @@
     server.autoStart = true;
   };
 
-  users.users.guest = {
-    isNormalUser = true;
-  };
-
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   # Tailscale behavior
