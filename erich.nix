@@ -134,7 +134,7 @@
   # Expose NTP server.
   networking.firewall.allowedUDPPorts = [ 123 ];
 
-  networking.nameservers = [ "1.1.1.1" "1.0.0.1" "100.82.239.88" ];
+  networking.nameservers = [ "100.82.239.88" "1.1.1.1" "1.0.0.1" ];
 
   # Possible fix for for "NetworkManager-wait-online.service failed"
   systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
