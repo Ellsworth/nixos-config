@@ -116,5 +116,6 @@
     intel-one-mono
     ibm-plex
     _3270font
+    font-awesome
   ];
 }
