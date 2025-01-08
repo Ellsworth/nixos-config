@@ -29,7 +29,10 @@
   home-manager.users.erich =
     { pkgs, ... }:
     {
-      home.packages = [ ];
+      home.packages = [
+        pkgs.cargo
+        pkgs.rustc
+      ];
       programs.bash.enable = true;
 
       # The state version is required and should stay at the version you
