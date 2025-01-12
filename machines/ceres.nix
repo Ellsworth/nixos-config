@@ -39,6 +39,19 @@
       home.stateVersion = "23.11";
     };
 
+  # Enable pulseaudio
+  nixpkgs.config.pulseaudio = true;
+
+  # Enable XFCE, in case we need a desktop.
+  services.xserver = {
+    enable = true;
+    desktopManager = {
+      xterm.enable = false;
+      xfce.enable = true;
+    };
+  };
+  services.displayManager.defaultSession = "xfce";
+
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   # Solve InfluxDB related errors involving "too many open files."
