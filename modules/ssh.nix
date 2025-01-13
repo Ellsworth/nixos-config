@@ -37,6 +37,18 @@
           hostname = "leap2.txstate.edu";
           proxyJump = "eros";
         };
+        "backup" = {
+          user = "erich";
+          hostname = "162.251.13.122";
+          port = 14142;
+        };
+        "seton" = {
+          user = "erich";
+          hostname = "192.168.213.199";
+          port = 14142;
+          proxyJump = "backup";
+        };
+
       };
     };
 
