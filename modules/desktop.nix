@@ -35,17 +35,19 @@
     pulse.enable = true;
   };
 
-  # KDE packages
   environment.systemPackages = with pkgs; [
-    kdePackages.yakuake
+    # KDE packages
     kdePackages.kcalc
+    kdePackages.yakuake
     kdePackages.konversation
 
     # Pomoduro
     francis
 
+    # hyprland packages
     kitty # required for the default Hyprland config
     waybar
+    wofi
   ];
 
   # Partition manager needs a daemon to work.
