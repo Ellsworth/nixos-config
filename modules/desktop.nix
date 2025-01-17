@@ -73,6 +73,7 @@
         firefox
         vesktop
         free42
+        anki
 
         # Programming
         octaveFull
