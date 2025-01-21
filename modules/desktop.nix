@@ -40,6 +40,7 @@
     kdePackages.kcalc
     kdePackages.yakuake
     kdePackages.konversation
+    kdePackages.krdp
 
     # Pomoduro
     francis
