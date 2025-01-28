@@ -75,6 +75,7 @@
         vesktop
         free42
         anki
+        just
 
         # Programming
         octaveFull
