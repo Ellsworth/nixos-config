@@ -57,6 +57,7 @@
     killall
     htop
     btop
+    just
     ncdu
     fastfetch
     distrobox
