@@ -60,11 +60,6 @@
       ];
     };
 
-  services.ollama = {
-    enable = true;
-    acceleration = "rocm";
-  };
-
   services.synergy = {
     server.enable = true;
     server.autoStart = true;
