@@ -105,6 +105,7 @@
           usernamehw.errorlens
           charliermarsh.ruff
           ms-vscode-remote.remote-containers
+          julialang.language-julia
         ];
       };
     };
