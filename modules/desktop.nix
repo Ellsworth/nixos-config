@@ -41,6 +41,7 @@
     kdePackages.yakuake
     kdePackages.konversation
     kdePackages.krdp
+    kdePackages.kleopatra
 
     # Pomoduro
     francis
