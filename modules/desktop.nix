@@ -101,7 +101,7 @@
         enable = true;
         extensions = with pkgs.vscode-extensions; [
           streetsidesoftware.code-spell-checker
-          rust-lang.rust-analyzer
+          # rust-lang.rust-analyzer
           yzhang.markdown-all-in-one
           usernamehw.errorlens
           charliermarsh.ruff
