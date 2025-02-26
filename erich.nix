@@ -95,7 +95,6 @@
 
       # Editors
       helix
-      emacs
 
       # Tools
       newsboat

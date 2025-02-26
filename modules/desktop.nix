@@ -42,6 +42,7 @@
     kdePackages.konversation
     kdePackages.krdp
     kdePackages.kleopatra
+    kdePackages.dolphin
 
     # Pomoduro
     francis

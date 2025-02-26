@@ -55,7 +55,7 @@
       home.packages = with pkgs; [
         (mumble.override { pulseSupport = true; })
         ryujinx
-        dolphin
+        dolphin-emu
         melonDS
       ];
     };

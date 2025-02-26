@@ -60,6 +60,16 @@
               "Apollo"
             ];
           };
+          "software" = {
+            path = "/home/erich/Software/sync";
+
+            devices = [
+              "Vega"
+              "Erich-PC"
+              "Artemis"
+              "Apollo"
+            ];
+          };
         };
       };
     };
