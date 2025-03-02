@@ -74,6 +74,7 @@
         # Utilities
         bitwarden
         firefox
+        librewolf
         vesktop
         free42
         anki
