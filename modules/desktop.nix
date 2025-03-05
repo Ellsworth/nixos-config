@@ -43,14 +43,10 @@
     kdePackages.krdp
     kdePackages.kleopatra
     kdePackages.dolphin
+    kdePackages.plasma-vault
 
     # Pomoduro
     francis
-
-    # hyprland packages
-    kitty # required for the default Hyprland config
-    waybar
-    wofi
   ];
 
   # Partition manager needs a daemon to work.
@@ -74,7 +70,6 @@
         # Utilities
         bitwarden
         firefox
-        librewolf
         vesktop
         free42
         anki
