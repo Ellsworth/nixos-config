@@ -30,8 +30,6 @@
     { pkgs, ... }:
     {
       home.packages = [
-        pkgs.cargo
-        pkgs.rustc
       ];
       programs.bash.enable = true;
 
