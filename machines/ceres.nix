@@ -55,8 +55,8 @@
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   # Ports
-  networking.firewall.allowedTCPPorts = [ 53 ];
-  networking.firewall.allowedUDPPorts = [ 53 ];
+  networking.firewall.allowedTCPPorts = lib.mkAfter [ 53 ];
+  networking.firewall.allowedUDPPorts = lib.mkAfter [ 53 ];
 
   # Solve InfluxDB related errors involving "too many open files."
   boot.kernel.sysctl = {

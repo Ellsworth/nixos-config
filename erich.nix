@@ -132,7 +132,8 @@
   };
 
   # Expose NTP server.
-  networking.firewall.allowedUDPPorts = [ 123 3389 ];
+  networking.firewall.allowedTCPPorts = lib.mkAfter [ 123 3389 ];
+  networking.firewall.allowedUDPPorts = lib.mkAfter [ 123 3389 ];
 
   networking.nameservers = [ "100.82.239.88" "1.1.1.1" "1.0.0.1" ];
 

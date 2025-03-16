@@ -3,8 +3,8 @@
 {
 
   # Enable ports for Syncthing
-  networking.firewall.allowedTCPPorts = [ 22000 ];
-  networking.firewall.allowedUDPPorts = [ 22000 ];
+  networking.firewall.allowedTCPPorts = lib.mkAfter [ 22000 ];
+  networking.firewall.allowedUDPPorts = lib.mkAfter [ 22000 ];
 
   services = {
     syncthing = {
