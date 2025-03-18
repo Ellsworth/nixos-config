@@ -1,5 +1,5 @@
 # services.syncthing.settings.devices
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
 
   # Enable ports for Syncthing
