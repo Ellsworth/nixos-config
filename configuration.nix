@@ -1,6 +1,13 @@
-{ config, pkgs, options, ... }:
-let hostname = "artemis"; # to alllow per-machine config
-in {
+{
+  config,
+  pkgs,
+  options,
+  ...
+}:
+let
+  hostname = "artemis"; # to alllow per-machine config
+in
+{
   networking.hostName = hostname;
 
   imports = [
