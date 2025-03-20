@@ -79,7 +79,10 @@
     # Required for custom NixOS build script to work.
     git
     nixfmt-rfc-style
-    uutils-coreutils
+
+    # Rust-based replacements
+    uutils-coreutils-noprefix
+    sudo-rs
 
     # System Utils.
     wget
