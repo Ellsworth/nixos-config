@@ -123,5 +123,8 @@
     ibm-plex
     _3270font
     font-awesome
+    atkinson-hyperlegible-mono
+    atkinson-hyperlegible-next
+
   ];
 }
