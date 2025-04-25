@@ -28,8 +28,8 @@
     ];
 
     # Make sure that Nix doesn't impact system responsiveness.
-    #daemonCPUSchedPolicy = "idle";
-    #daemonIOSchedClass = "idle";
+    daemonCPUSchedPolicy = "idle";
+    daemonIOSchedClass = "idle";
 
   };
 
