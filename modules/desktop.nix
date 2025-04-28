@@ -93,12 +93,11 @@
         hunspell
         hunspellDicts.en_US
       ];
-
       programs.bash.enable = true;
 
       programs.vscode = {
         enable = true;
-        extensions = with pkgs.vscode-extensions; [
+        profiles.default.extensions = with pkgs.vscode-extensions; [
           streetsidesoftware.code-spell-checker
           rust-lang.rust-analyzer
           yzhang.markdown-all-in-one
