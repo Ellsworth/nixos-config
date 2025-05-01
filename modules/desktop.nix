@@ -52,6 +52,9 @@
     kdePackages.dolphin
     kdePackages.plasma-vault
 
+    # Show Tailscale status on the tray
+    tail-tray
+
     # Pomoduro
     francis
   ];
