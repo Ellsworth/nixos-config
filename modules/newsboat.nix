@@ -154,6 +154,10 @@
             url = "https://xeiaso.net/blog.rss";
             tags = [ "blog" ];
           }
+          {
+            url = "https://www.electrospaces.net/feeds/posts/default";
+            tags = [ "blog" ];
+          }
 
           # Random
           {
