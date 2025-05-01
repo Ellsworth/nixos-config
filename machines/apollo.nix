@@ -26,6 +26,14 @@
   # Tailscale behavior
   services.tailscale.useRoutingFeatures = "client";
 
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
+  environment.systemPackages = with pkgs; [
+
+    nvtopPackages.amd
+
+  ];
+
   home-manager.users.erich =
     { pkgs, ... }:
     {
