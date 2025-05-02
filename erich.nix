@@ -94,8 +94,6 @@
     ncdu
     fastfetch
     distrobox
-    podman-compose
-    docker-compose
   ];
 
   users.users.erich = {

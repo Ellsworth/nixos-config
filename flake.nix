@@ -14,17 +14,7 @@
     inputs@{ self, nixpkgs, home-manager, nixos-hardware, ... }:
     {
       nixosConfigurations = {
-        hostname = nixpkgs.lib.artemis {
-          system = "x86_64-linux";
-          modules = [
-            ./machines/artemis.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-            }
-          ];
-        };
+
         hostname = nixpkgs.lib.apollo {
           system = "x86_64-linux";
           modules = [
