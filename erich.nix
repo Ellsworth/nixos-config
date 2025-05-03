@@ -34,11 +34,11 @@
   # Auto-upgrade system.
   system.autoUpgrade = {
     enable = true;
-    flake  = "/home/erich/nixos-config"; # directory that contains flake.nix
-    flags  = [
-      "--update"                      # Update all channels
-      "--commit-lock-file"            # commit the lock after updating
-      "--recreate-lock-file"          # create one if missing
+    flake = "/home/erich/nixos-config"; # directory that contains flake.nix
+    flags = [
+      "--update" # Update all channels
+      "--commit-lock-file" # commit the lock after updating
+      "--recreate-lock-file" # create one if missing
     ];
   };
 
