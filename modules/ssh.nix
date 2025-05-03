@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  imports = [ <home-manager/nixos> ];
+  imports = [ ];
 
   home-manager.users.erich =
     { pkgs, ... }:

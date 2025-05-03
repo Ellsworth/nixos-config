@@ -1,45 +1,48 @@
 #!/usr/bin/env bash
-
-# Stolen from: https://gist.github.com/0atman/1a5133b842f929ba4c1e195ee67599d5
-
-# I believe there are a few ways to do this:
 #
-#    1. My current way, using a minimal /etc/nixos/configuration.nix that just imports my config from my home directory (see it in the gist)
-#    2. Symlinking to your own configuration.nix in your home directory (I think I tried and abandoned this and links made relative paths weird)
-#    3. My new favourite way: as @clot27 says, you can provide nixos-rebuild with a path to the config, allowing it to be entirely inside your dotfies, with zero bootstrapping of files required.
-#       `nixos-rebuild switch -I nixos-config=path/to/configuration.nix`
-#    4. If you uses a flake as your primary config, you can specify a path to `configuration.nix` in it and then `nixos-rebuild switch —flake` path/to/directory
-# As I hope was clear from the video, I am new to nixos, and there may be other, better, options, in which case I'd love to know them! (I'll update the gist if so)
+# Rebuild NixOS from a flake and commit the result if it succeeds.
+# Works on any machine whose nixosConfigurations.<hostname> exists.
 
-# A rebuild script that commits on a successful build
-set -e
+set -euo pipefail
 
-# cd to your config dir
-pushd ~/nixos-config/
+REPO="$HOME/nixos-config"
+HOST="$(hostname)"
 
-# Pull latest changes
-git pull
+pushd "$REPO"
 
-# Autoformat your nix files
-nixfmt **/*.nix
+echo "→ Pulling latest repo changes"
+git pull --ff-only
 
-# Shows your changes
-git diff -U0 *.nix
+echo "→ Updating flake inputs"
+nix flake update            # adds a new flake.lock entry if anything changed
 
-echo "NixOS Rebuilding..."
+echo "→ Formatting Nix files"
+nix fmt .
 
-# Rebuild, output simplified errors, log trackebacks
-sudo nixos-rebuild switch --upgrade &>nixos-switch.log || (cat nixos-switch.log | grep --color error && false)
+echo "→ Diff since last commit:"
+git diff -U0 '*.nix' flake.lock || true   # always show, even if empty
 
-# Get current generation metadata
-current=$(nixos-rebuild list-generations | grep current)
+echo "→ Building & switching system for $HOST ..."
+# NOTE:  --impure lets Nix see uncommitted changes; drop it for purely pinned builds
+#        --log-format pretty gives cleaner errors in the log
+if sudo nixos-rebuild switch \
+        --flake .#"${HOST}" \
+        --log-format bar-with-logs \
+        &> nixos-switch.log
+then
+    echo "✓ Rebuild succeeded"
+else
+    echo "✗ Rebuild failed — showing errors:"
+    grep --color -iE '(error:|failed|cannot)' nixos-switch.log || true
+    exit 1
+fi
 
-# Get hostname
-hostname=$(hostname)
+# Record the generation we just activated
+CURRENT_GEN="$(sudo nixos-rebuild list-generations --flake .#"${HOST}" | grep current)"
 
-# Commit all changes witih the generation metadata
-git commit -am "$hostname - $current"
+echo "→ Committing changes: $CURRENT_GEN"
+git add flake.lock
+git commit -am "$HOST – $CURRENT_GEN"
 git push
 
-# Back to where you were
 popd

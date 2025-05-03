@@ -1,12 +1,10 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
+{ config
+, pkgs
+, lib
+, ...
 }:
 {
   imports = [
-    <home-manager/nixos>
     modules/ssh.nix
     modules/newsboat.nix
   ];

@@ -1,8 +1,7 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
+{ config
+, pkgs
+, lib
+, ...
 }:
 {
   imports = [
@@ -11,9 +10,6 @@
 
     ../erich.nix
     ../modules/remote-build-client.nix
-
-    # home-manager
-    <home-manager/nixos>
   ];
 
   # Bootloader.
