@@ -11,7 +11,13 @@ HOST="$(hostname)"
 pushd "$REPO"
 
 echo "→ Pulling latest repo changes"
-git pull --ff-only
+tries=0
+until git push; do
+  git pull --ff-only          # catch up
+  tries=$((tries+1))
+  [ "$tries" -lt 3 ] || exit 1
+done
+
 
 echo "→ Updating flake inputs"
 nix flake update            # adds a new flake.lock entry if anything changed
