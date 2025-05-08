@@ -1,10 +1,12 @@
-{ config
-, pkgs
-, lib
-, ...
+{
+  config,
+  pkgs,
+  lib,
+  ...
 }:
 {
   imports = [
+    <home-manager/nixos>
     modules/ssh.nix
     modules/newsboat.nix
   ];
@@ -32,15 +34,7 @@
   };
 
   # Auto-upgrade system.
-  system.autoUpgrade = {
-    enable = true;
-    flake = "/home/erich/nixos-config"; # directory that contains flake.nix
-    flags = [
-      "--update" # Update all channels
-      "--commit-lock-file" # commit the lock after updating
-      "--recreate-lock-file" # create one if missing
-    ];
-  };
+  system.autoUpgrade.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -50,6 +44,9 @@
   programs.nix-ld.enable = true;
 
   services = {
+    # Automatically change the timezone.
+    automatic-timezoned.enable = true;
+
     # Utility to update device firmware.
     fwupd.enable = true;
 
@@ -97,6 +94,8 @@
     ncdu
     fastfetch
     distrobox
+    podman-compose
+    docker-compose
   ];
 
   users.users.erich = {

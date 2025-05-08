@@ -2,6 +2,7 @@
 { config, pkgs, ... }:
 {
   imports = [
+    <home-manager/nixos>
     ./syncthing.nix
   ];
 
@@ -116,16 +117,6 @@
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  };
-
-  # Enable OBS studio.
-  programs.obs-studio = {
-    enable = true;
-    plugins = with pkgs.obs-studio-plugins; [
-      wlrobs
-      obs-backgroundremoval
-      obs-pipewire-audio-capture
-    ];
   };
 
   # Install fonts.

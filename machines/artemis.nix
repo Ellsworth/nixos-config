@@ -4,6 +4,7 @@
 { config, pkgs, ... }:
 {
   imports = [
+    <home-manager/nixos>
     ../erich.nix
     ../modules/desktop.nix
     ../modules/vm.nix
