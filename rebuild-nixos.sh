@@ -28,6 +28,9 @@ git diff -U0 *.nix
 
 echo "NixOS Rebuilding..."
 
+# Update channels
+sudo nix-channel --update
+
 # Rebuild, output simplified errors, log trackebacks
 sudo nixos-rebuild switch --upgrade &>nixos-switch.log || (cat nixos-switch.log | grep --color error && false)
 
