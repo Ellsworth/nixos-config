@@ -158,6 +158,10 @@
             url = "https://www.electrospaces.net/feeds/posts/default";
             tags = [ "blog" ];
           }
+          {
+            url = "https://blog.rongarret.info/feeds/posts/default";
+            tags = [ "blog" ];
+          }
 
           # Random
           {
