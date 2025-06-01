@@ -224,6 +224,20 @@
             ];
           }
 
+          {
+            url = "https://feeds.stripes.com/apps/us_news.xml";
+            tags = [
+              "news"
+            ];
+          }
+
+          {
+            url = "https://feeds.stripes.com/apps/front_page.xml";
+            tags = [
+              "news"
+            ];
+          }
+
           # Misc
           {
             url = "https://kg5key.com/feed.xml";
