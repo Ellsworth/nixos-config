@@ -6,6 +6,9 @@
   # Add user to libvirtd group
   users.users.erich.extraGroups = [ "libvirtd" ];
 
+  # Enable OpenGL for hardware acceleration
+  hardware.opengl.enable = true;
+
   # Install necessary packages
   environment.systemPackages = with pkgs; [
     virt-manager
