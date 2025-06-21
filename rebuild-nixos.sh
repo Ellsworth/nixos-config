@@ -11,7 +11,7 @@
 #    4. If you uses a flake as your primary config, you can specify a path to `configuration.nix` in it and then `nixos-rebuild switch —flake` path/to/directory
 # As I hope was clear from the video, I am new to nixos, and there may be other, better, options, in which case I'd love to know them! (I'll update the gist if so)
 
-# A rebuild script that commits on a successful build
+#!/usr/bin/env bash
 set -e
 
 # cd to your config dir
@@ -31,8 +31,21 @@ echo "NixOS Rebuilding..."
 # Update channels
 sudo nix-channel --update
 
-# Rebuild, output simplified errors, log trackebacks
-sudo nixos-rebuild switch --upgrade &>nixos-switch.log || (cat nixos-switch.log | grep --color error && false)
+# Get old system profile path
+old=$(readlink -f /nix/var/nix/profiles/system)
+
+# Rebuild with simplified error logging
+if ! sudo nixos-rebuild switch --upgrade &>nixos-switch.log; then
+    grep --color error nixos-switch.log
+    false
+fi
+
+# Get new system profile path
+new=$(readlink -f /nix/var/nix/profiles/system)
+
+# Show package differences
+echo "nvd diff $old $new"
+nvd diff "$old" "$new"
 
 # Get current generation metadata
 current=$(nixos-rebuild list-generations | grep current)
@@ -40,9 +53,13 @@ current=$(nixos-rebuild list-generations | grep current)
 # Get hostname
 hostname=$(hostname)
 
-# Commit all changes witih the generation metadata
+# Commit all changes with the generation metadata
 git commit -am "$hostname - $current"
 git push
 
 # Back to where you were
 popd
+
+# Collect garbage
+sudo nix-collect-garbage --delete-older-than 30d
+nix-collect-garbage --delete-older-than 30d
