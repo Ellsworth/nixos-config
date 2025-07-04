@@ -80,6 +80,7 @@
     # Required for custom NixOS build script to work.
     git
     nixfmt-rfc-style
+    nvd
 
     # Rust-based replacements
     uutils-coreutils-noprefix
