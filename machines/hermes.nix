@@ -13,13 +13,6 @@
 
     #../erich.nix
     ../modules/remote-build-client.nix
-
-    # home-manager
-    <home-manager/nixos>
-
-    # Pi 3 bits
-    <nixpkgs/nixos/modules/installer/sd-card/sd-image-aarch64.nix>
-    <nixos-hardware/raspberry-pi/3>
   ];
 
   #nixpkgs.overlays = [

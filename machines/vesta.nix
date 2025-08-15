@@ -11,9 +11,6 @@
 
     ../erich.nix
     ../modules/remote-build-client.nix
-
-    # home-manager
-    <home-manager/nixos>
   ];
 
   # Bootloader.

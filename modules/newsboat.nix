@@ -5,7 +5,6 @@
   ...
 }:
 {
-  imports = [ <home-manager/nixos> ];
   home-manager.users.erich =
     { pkgs, ... }:
     {

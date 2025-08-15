@@ -6,7 +6,6 @@
 }:
 {
   imports = [
-    <home-manager/nixos>
     modules/ssh.nix
     modules/newsboat.nix
   ];

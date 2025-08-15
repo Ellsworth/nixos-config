@@ -2,7 +2,6 @@
 { config, pkgs, ... }:
 {
   imports = [
-    <home-manager/nixos>
     ./syncthing.nix
   ];
 
@@ -33,7 +32,6 @@
   };
 
   # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -100,7 +98,7 @@
 
       programs.vscode = {
         enable = true;
-        profiles.default.extensions = with pkgs.vscode-extensions; [
+        extensions = with pkgs.vscode-extensions; [
           streetsidesoftware.code-spell-checker
           rust-lang.rust-analyzer
           yzhang.markdown-all-in-one

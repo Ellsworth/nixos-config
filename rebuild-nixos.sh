@@ -28,14 +28,17 @@ git diff -U0 *.nix
 
 echo "NixOS Rebuilding..."
 
-# Update channels
-sudo nix-channel --update
+# Update flake lockfile
+nix flake update
+
+# Determine hostname
+hostname=$(hostname)
 
 # Get old system profile path
 old=$(readlink -f /nix/var/nix/profiles/system)
 
 # Rebuild with simplified error logging
-if ! sudo nixos-rebuild switch --upgrade &>nixos-switch.log; then
+if ! sudo nixos-rebuild switch --flake ".#${hostname}" &>nixos-switch.log; then
     grep --color error nixos-switch.log
     false
 fi
@@ -49,9 +52,6 @@ nvd diff "$old" "$new"
 
 # Get current generation metadata
 current=$(nixos-rebuild list-generations | grep current)
-
-# Get hostname
-hostname=$(hostname)
 
 # Commit all changes with the generation metadata
 git commit -am "$hostname - $current"
