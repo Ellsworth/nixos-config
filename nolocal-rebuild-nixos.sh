@@ -28,14 +28,17 @@ git diff -U0 *.nix
 
 echo "NixOS Rebuilding..."
 
+# Update flake lockfile
+nix flake update
+
+# Determine hostname
+hostname=$(hostname)
+
 # Rebuild, output simplified errors, log trackebacks
-sudo nixos-rebuild -j0 switch --upgrade &>nixos-switch.log || (cat nixos-switch.log | grep --color error && false)
+sudo nixos-rebuild -j0 switch --flake ".#${hostname}" &>nixos-switch.log || (cat nixos-switch.log | grep --color error && false)
 
 # Get current generation metadata
 current=$(nixos-rebuild list-generations | grep current)
-
-# Get hostname
-hostname=$(hostname)
 
 # Commit all changes witih the generation metadata
 git commit -am "$hostname - $current"

@@ -5,12 +5,6 @@
     ../modules/desktop.nix
     ../modules/remote-build-client.nix
     ../modules/vm.nix
-
-    # Framework 13
-    <nixos-hardware/framework/13-inch/7040-amd>
-
-    # home-manager
-    <home-manager/nixos>
   ];
 
   # Bootloader.

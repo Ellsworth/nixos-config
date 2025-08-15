@@ -6,15 +6,27 @@
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
-    }
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    };
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
   };
 
-  outputs =
-    inputs@{ self, nixpkgs, home-manager, nixos-hardware, ... }:
+  outputs = { self, nixpkgs, home-manager, nixos-hardware, ... }:
     {
       nixosConfigurations = {
-        hostname = nixpkgs.lib.artemis {
+        apollo = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./machines/apollo.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+            }
+            nixos-hardware.nixosModules.framework-13-7040-amd
+          ];
+        };
+
+        artemis = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             ./machines/artemis.nix
@@ -25,18 +37,7 @@
             }
           ];
         };
-        hostname = nixpkgs.lib.apollo {
-          system = "x86_64-linux";
-          modules = [
-            ./machines/apollo.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-            }
-            nixos-hardware.nixosModules.dell-xps-13-9380
-          ];
-        };
       };
     };
 }
+
