@@ -10,11 +10,19 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
   };
 
-  outputs = { self, nixpkgs, home-manager, nixos-hardware, ... }:
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      home-manager,
+      nixos-hardware,
+      ...
+    }:
     {
       nixosConfigurations = {
         apollo = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
           modules = [
             ./machines/apollo.nix
             home-manager.nixosModules.home-manager
@@ -28,6 +36,7 @@
 
         artemis = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
           modules = [
             ./machines/artemis.nix
             home-manager.nixosModules.home-manager
@@ -40,4 +49,3 @@
       };
     };
 }
-
