@@ -10,6 +10,8 @@
     ../modules/syncthing-games.nix
   ];
 
+  networking.hostName = "artemis";
+
   # Run latest Linux kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 

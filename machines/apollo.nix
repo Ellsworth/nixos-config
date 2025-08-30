@@ -7,6 +7,8 @@
     ../modules/vm.nix
   ];
 
+  networking.hostName = "apollo";
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
