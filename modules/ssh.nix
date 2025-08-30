@@ -46,7 +46,11 @@
           port = 14142;
           proxyJump = "backup";
         };
-
+        "hipe" = {
+          user = "hipe6-thrc";
+          hostname = "100.100.102.43";
+          port = 48291;
+        }
       };
     };
 

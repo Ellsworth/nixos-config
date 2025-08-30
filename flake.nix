@@ -25,6 +25,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./machines/apollo.nix
+            ./machines/apollo-hardware-configuration.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
