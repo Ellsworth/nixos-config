@@ -55,6 +55,9 @@
 
     # Pomoduro
     francis
+
+    # Remote desktop
+    remmina
   ];
 
   # Partition manager needs a daemon to work.
