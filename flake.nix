@@ -40,6 +40,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./machines/artemis.nix
+            ./machines/artemis-hardware-configuration.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;

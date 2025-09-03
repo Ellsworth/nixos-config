@@ -1,21 +1,21 @@
 { config, pkgs, ... }:
 {
   nix.buildMachines = [
-    # {
-    #  hostName = "artemis";
-    #  system = "x86_64-linux";
-    #  protocol = "ssh-ng";
-    #  # if the builder supports building for multiple architectures,
-    #  # replace the previous line by, e.g.
-    #  # systems = ["x86_64-linux" "aarch64-linux"];
-    #  maxJobs = 2;
-    #  speedFactor = 2;
-    #  supportedFeatures = [
-    #    "big-parallel"
-    #    "kvm"
-    #  ];
-    #  mandatoryFeatures = [ ];
-    #}
+    {
+      hostName = "artemis";
+      system = "x86_64-linux";
+      protocol = "ssh-ng";
+      # if the builder supports building for multiple architectures,
+      # replace the previous line by, e.g.
+      # systems = ["x86_64-linux" "aarch64-linux"];
+      maxJobs = 2;
+      speedFactor = 2;
+      supportedFeatures = [
+        "big-parallel"
+        "kvm"
+      ];
+      mandatoryFeatures = [ ];
+    }
 
     {
       hostName = "ceres";
