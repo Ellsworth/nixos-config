@@ -48,6 +48,20 @@
             }
           ];
         };
+
+        hermes = nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./machines/hermes.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+            }
+            nixos-hardware.nixosModules.raspberry-pi-3
+          ];
+        };
       };
     };
-}
+  }
