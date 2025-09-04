@@ -6,11 +6,9 @@
 }:
 {
   imports = [
-    # Include the results of the hardware scan.
-    #./hardware-configuration.nix
-
     ../erich.nix
     ../modules/remote-build-client.nix
+    ../modules/syncthing.nix
   ];
 
   networking.hostName = "hermes";
@@ -30,6 +28,13 @@
 
   # Tailscale behavior
   services.tailscale.useRoutingFeatures = "server";
+
+  libraspberrypi
+
+  # System-wide packages.
+  environment.systemPackages = with pkgs; [
+    libraspberrypi
+  ];
 
   home-manager.users.erich =
     { pkgs, ... }:
