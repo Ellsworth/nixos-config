@@ -54,7 +54,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./machines/hermes.nix
-            ./machines/artemis-hardware-configuration.nix
+            ./machines/hermes-hardware-configuration.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
