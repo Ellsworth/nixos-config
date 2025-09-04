@@ -13,15 +13,15 @@
 
   networking.hostName = "hermes";
 
-
-  swapDevices = [{
-    device = "/swapfile";
-    size = 16 * 1024;
-  }];
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 16 * 1024;
+    }
+  ];
 
   # Enable networking
   networking.networkmanager.enable = true;
-
 
   # Allow reboot to apply changes.
   system.autoUpgrade.allowReboot = true;
@@ -29,11 +29,10 @@
   # Tailscale behavior
   services.tailscale.useRoutingFeatures = "server";
 
-  libraspberrypi
-
   # System-wide packages.
   environment.systemPackages = with pkgs; [
     libraspberrypi
+
   ];
 
   home-manager.users.erich =
