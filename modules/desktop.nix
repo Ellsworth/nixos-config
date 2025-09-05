@@ -99,14 +99,11 @@
       programs.vscode = {
         enable = true;
         extensions = with pkgs.vscode-extensions; [
-          streetsidesoftware.code-spell-checker
           rust-lang.rust-analyzer
           yzhang.markdown-all-in-one
           usernamehw.errorlens
           charliermarsh.ruff
           ms-vscode-remote.remote-containers
-          julialang.language-julia
-          continue.continue
         ];
       };
     };
