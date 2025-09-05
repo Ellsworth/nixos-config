@@ -44,9 +44,6 @@
   programs.nix-ld.enable = true;
 
   services = {
-    # Automatically change the timezone.
-    automatic-timezoned.enable = true;
-
     # Utility to update device firmware.
     fwupd.enable = true;
 
