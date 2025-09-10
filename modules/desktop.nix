@@ -60,6 +60,10 @@
   # Partition manager needs a daemon to work.
   programs.partition-manager.enable = true;
 
+  # Wireshark network analyzer
+  programs.wireshark.enable = true;
+  users.users.erich.extraGroups = [ "wireshark" ];
+
   # Enable Flatpak
   services.flatpak.enable = true;
 
