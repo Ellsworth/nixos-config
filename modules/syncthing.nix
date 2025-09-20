@@ -31,7 +31,7 @@
           };
           "Hermes" = {
             id = "U2CTYYU-W5YON4S-ODEEIKO-FR2SYSR-ABM3UOD-BDVWA2I-MKSKHFD-5QIDFQO";
-          }
+          };
         };
 
         folders = {
