@@ -43,6 +43,15 @@
     ];
   };
 
+  fileSystems."/mnt/ddrive" = {
+    device = "/dev/sda2";
+    fsType = "ntfs-3g";
+    options = [
+      "rw"
+      "uid=1000"
+    ];
+  };
+
   swapDevices = [
     { device = "/dev/disk/by-uuid/3f9cb9ca-4054-4dfa-9086-0d73dcfe5cc7"; }
   ];

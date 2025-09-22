@@ -75,6 +75,13 @@
   # Tailscale behavior
   services.tailscale.useRoutingFeatures = "both";
 
+  # Enable qbittorrent
+  services.qbittorrent = {
+    enable = true;
+    openFirewall = true;
+    torrentingPort = 25565;
+  };
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
