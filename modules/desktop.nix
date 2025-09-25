@@ -55,6 +55,9 @@
 
     # Remote desktop
     remmina
+
+    # Misc apps
+    wireshark
   ];
 
   # Partition manager needs a daemon to work.
@@ -102,7 +105,7 @@
 
       programs.vscode = {
         enable = true;
-        extensions = with pkgs.vscode-extensions; [
+        profiles.default.extensions = with pkgs.vscode-extensions; [
           rust-lang.rust-analyzer
           yzhang.markdown-all-in-one
           usernamehw.errorlens
