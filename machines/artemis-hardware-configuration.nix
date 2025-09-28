@@ -45,10 +45,12 @@
 
   fileSystems."/mnt/ddrive" = {
     device = "/dev/sda2";
-    fsType = "ntfs-3g";
+    fsType = "ntfs";
     options = [
       "rw"
       "uid=1000"
+      "noauto"
+      "x-systemd.automount"
     ];
   };
 
