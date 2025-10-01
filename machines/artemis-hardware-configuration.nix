@@ -44,14 +44,9 @@
   };
 
   fileSystems."/mnt/ddrive" = {
-    device = "/dev/sda2";
-    fsType = "ntfs";
-    options = [
-      "rw"
-      "uid=1000"
-      "noauto"
-      "x-systemd.automount"
-    ];
+    device = "/dev/disk/by-uuid/823dc236-a25c-4664-99d8-71cd2c585739";
+    fsType = "ext4";
+    options = [ "nofail" ];
   };
 
   swapDevices = [

@@ -21,18 +21,18 @@
     adwaita-icon-theme
   ];
 
-# Manage the virtualisation services
-virtualisation = {
-  libvirtd = {
-    enable = true;
-    qemu = {
-      swtpm.enable = true;
-      ovmf.enable = true;
-      ovmf.packages = [ pkgs.OVMFFull ];
+  # Manage the virtualisation services
+  virtualisation = {
+    libvirtd = {
+      enable = true;
+      qemu = {
+        swtpm.enable = true;
+        ovmf.enable = true;
+        ovmf.packages = [ pkgs.OVMFFull ];
+      };
     };
+    spiceUSBRedirection.enable = true;
   };
-  spiceUSBRedirection.enable = true;
-};
-services.spice-vdagentd.enable = true;
+  services.spice-vdagentd.enable = true;
 
 }
