@@ -85,7 +85,8 @@
   # Enable resilio sync, for sharing with friends
   services.resilio = {
     enable = true;
-    enableWebUI = true;  # or true if you want web UI
+    enableWebUI = true; # or true if you want web UI
+    httpListenPort = 8888;
     checkForUpdates = false;
     downloadLimit = 0;
     uploadLimit = 0;
