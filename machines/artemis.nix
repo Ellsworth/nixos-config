@@ -82,6 +82,19 @@
     torrentingPort = 25565;
   };
 
+  # Enable resilio sync, for sharing with friends
+  services.resilio = {
+    enable = true;
+    enableWebUI = true;  # or true if you want web UI
+    checkForUpdates = false;
+    downloadLimit = 0;
+    uploadLimit = 0;
+    deviceName = "Erich-PC";
+    listeningPort = 4444;
+  };
+
+  networking.firewall.allowedTCPPorts = [ 4444 ];
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
