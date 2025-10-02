@@ -86,7 +86,9 @@
   services.resilio = {
     enable = true;
     enableWebUI = true; # or true if you want web UI
-    httpListenPort = 8888;
+    httpListenPort = 9888;
+    httpLogin = "oats";
+    httpPass = "oats";
     checkForUpdates = false;
     downloadLimit = 0;
     uploadLimit = 0;
