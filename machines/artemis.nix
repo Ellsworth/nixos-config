@@ -87,6 +87,7 @@
     enable = true;
     enableWebUI = true; # or true if you want web UI
     httpListenPort = 9888;
+    httpListenAddr = "0.0.0.0";
     httpLogin = "oats";
     httpPass = "oats";
     checkForUpdates = false;
