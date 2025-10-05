@@ -27,6 +27,9 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.firewall.allowedTCPPorts = [ 
+      8123 # Home Assistant
+    ];
 
   # Allow reboot to apply changes.
   system.autoUpgrade.allowReboot = true;
