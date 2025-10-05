@@ -27,9 +27,9 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-  networking.firewall.allowedTCPPorts = [ 
-      8123 # Home Assistant
-    ];
+  networking.firewall.allowedTCPPorts = [
+    8123 # Home Assistant
+  ];
 
   # Allow reboot to apply changes.
   system.autoUpgrade.allowReboot = true;
@@ -53,14 +53,14 @@
       home.stateVersion = "25.05";
     };
 
-    virtualisation.oci-containers = {
+  virtualisation.oci-containers = {
     backend = "podman";
     containers.homeassistant = {
       volumes = [ "home-assistant:/config" ];
       environment.TZ = "America/Chicago";
       image = "ghcr.io/home-assistant/home-assistant:stable"; # Warning: if the tag does not change, the image will not be updated
-      extraOptions = [ 
-        "--network=host" 
+      extraOptions = [
+        "--network=host"
         #"--device=/dev/ttyACM0:/dev/ttyACM0"  # Example, change this to match your own hardware
       ];
     };
