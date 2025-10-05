@@ -32,6 +32,9 @@
           "Hermes" = {
             id = "U2CTYYU-W5YON4S-ODEEIKO-FR2SYSR-ABM3UOD-BDVWA2I-MKSKHFD-5QIDFQO";
           };
+          "Sebby" = {
+            id = "UUJLCAZ-UFQ2TOL-CVYX4QN-QMHCKHK-P5QSD3E-5OZAYCU-FZ2LVZV-75PEZAK";
+          };
         };
 
         folders = {
@@ -68,13 +71,20 @@
           };
           "software" = {
             path = "/home/erich/Software/sync";
-
             devices = [
               "Vega"
               "Erich-PC"
               "Artemis"
               "Apollo"
               "Hermes"
+            ];
+          };
+          "games-download" = {
+            path = "/mnt/ddrive/torrents/games/sebby/";
+            devices = [
+              "Artemis"
+              "Sebby"
+
             ];
           };
         };
