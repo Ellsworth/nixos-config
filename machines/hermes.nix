@@ -13,12 +13,17 @@
 
   networking.hostName = "hermes";
 
+  # Create a swapfile
   swapDevices = [
     {
       device = "/swapfile";
-      size = 16 * 1024;
+      size = 16 * 1024; # 16 GB
     }
   ];
+
+  boot.kernel.sysctl = {
+    "vm.swappiness" = 20; # default is 60
+  };
 
   # Enable networking
   networking.networkmanager.enable = true;
