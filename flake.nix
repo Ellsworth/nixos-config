@@ -69,7 +69,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./machines/ceres.nix
-            ./machines/ceres.nix-hardware-configuration.nix
+            ./machines/ceres-hardware-configuration.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
