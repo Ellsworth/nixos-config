@@ -65,10 +65,10 @@
       home.stateVersion = "23.11";
     };
 
-  services.synergy = {
-    server.enable = true;
-    server.autoStart = true;
-  };
+  # services.synergy = {
+  #  server.enable = true;
+  #  server.autoStart = true;
+  # };
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 

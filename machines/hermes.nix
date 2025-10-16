@@ -25,6 +25,8 @@
     "vm.swappiness" = 20; # default is 60
   };
 
+  boot.kernelParams = [ "elevator=bfq" ];
+
   # Enable networking
   networking.networkmanager.enable = true;
   networking.firewall.allowedTCPPorts = [
