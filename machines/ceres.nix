@@ -10,7 +10,6 @@
     #./hardware-configuration.nix
 
     ../erich.nix
-    ../modules/remote-build-client.nix
   ];
 
   # Bootloader.
