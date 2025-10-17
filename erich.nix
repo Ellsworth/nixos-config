@@ -34,7 +34,15 @@
   };
 
   # Auto-upgrade system.
-  system.autoUpgrade.enable = true;
+system.autoUpgrade = {
+  enable = true;
+  dates = "Sun 04:00";
+  randomizedDelaySec = "45min";
+  flake = "${config.users.users.erich.home}/nixos-config#${config.networking.hostName}";
+  flags = [ "--update-input" "nixpkgs" "-L" ];
+  
+};
+
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

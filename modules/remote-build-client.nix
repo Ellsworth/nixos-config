@@ -3,7 +3,10 @@
   nix.buildMachines = [
     {
       hostName = "artemis";
-      systems = []"x86_64-linux" "aarch64-linux"];
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+      ];
       protocol = "ssh-ng";
       maxJobs = 2;
       speedFactor = 2;
