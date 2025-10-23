@@ -11,6 +11,9 @@
 #    4. If you uses a flake as your primary config, you can specify a path to `configuration.nix` in it and then `nixos-rebuild switch —flake` path/to/directory
 # As I hope was clear from the video, I am new to nixos, and there may be other, better, options, in which case I'd love to know them! (I'll update the gist if so)
 
+# List generations
+nix profile history --profile /nix/var/nix/profiles/system
+
 #!/usr/bin/env bash
 set -e
 
