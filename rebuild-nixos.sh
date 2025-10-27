@@ -57,6 +57,7 @@ nvd diff "$old" "$new"
 current=$(nixos-rebuild list-generations | grep current)
 
 # Commit all changes with the generation metadata
+git add -A
 git commit -am "$hostname - $current"
 git push
 
