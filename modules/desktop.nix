@@ -99,6 +99,7 @@
         libreoffice-qt
         hunspell
         hunspellDicts.en_US
+        zotero
       ];
       programs.bash.enable = true;
 
