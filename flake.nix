@@ -63,7 +63,7 @@
             nixos-hardware.nixosModules.raspberry-pi-3
           ];
         };
-        
+
         ceres = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
@@ -79,4 +79,4 @@
         };
       };
     };
-  }
+}
