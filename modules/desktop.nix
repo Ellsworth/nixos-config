@@ -8,6 +8,10 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  nix.extraOptions = ''
+    download-buffer-size = 536870912
+  '';
+
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
