@@ -11,10 +11,9 @@
     modules/newsboat.nix
   ];
 
-                nixpkgs.config.permittedInsecurePackages = [
-                "mbedtls-2.28.10"
-              ];
-
+  nixpkgs.config.permittedInsecurePackages = [
+    "mbedtls-2.28.10"
+  ];
 
   nix = {
     gc = {
@@ -71,7 +70,10 @@
     fwupd.enable = true;
 
     # Tailscale VPN
-    tailscale.enable = true;
+    tailscale = {
+      enable = true;
+      package = pkgs.unstable.tailscale;
+    };
 
     # Chrony NTP Service
     chrony = {
