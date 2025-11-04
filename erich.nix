@@ -55,6 +55,13 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnfreePredicate = _: true;
+  nixpkgs.overlays = [
+    (final: prev: {
+      unstable = import inputs.nixpkgs-unstable {
+        inherit (final) system config;
+      };
+    })
+  ];
 
   # Run unpatched dynamic binaries on NixOS.
   programs.nix-ld.enable = true;
