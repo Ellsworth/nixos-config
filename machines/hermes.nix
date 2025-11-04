@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  modulesPath,
   ...
 }:
 {
@@ -9,6 +10,7 @@
     ../erich.nix
     ../modules/remote-build-client.nix
     ../modules/syncthing.nix
+    (modulesPath + "/installer/cd-dvd/sd-image.nix")
   ];
 
   networking.hostName = "hermes";
@@ -66,6 +68,13 @@
         #"--device=/dev/ttyACM0:/dev/ttyACM0"  # Example, change this to match your own hardware
       ];
     };
+  };
+
+  sdImage = {
+    compressImage = false;
+    imageName = "hermes-${config.system.nixos.label}.img";
+    # Build the SD image on demand with:
+    #   nix build .#packages.aarch64-linux.hermes-img
   };
 
   # This value determines the NixOS release from which the default

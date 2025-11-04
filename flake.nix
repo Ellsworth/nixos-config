@@ -78,5 +78,10 @@
           ];
         };
       };
+      # Build the Hermes SD image explicitly with:
+      #   nix build .#packages.aarch64-linux.hermes-img
+      packages.aarch64-linux = {
+        hermes-img = self.nixosConfigurations.hermes.config.system.build.sdImage;
+      };
     };
 }
