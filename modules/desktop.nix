@@ -62,6 +62,7 @@
 
     # Misc apps
     wireshark
+    unstable.tailscale
   ];
 
   # Partition manager needs a daemon to work.
