@@ -62,7 +62,7 @@
 
     # Misc apps
     wireshark
-    unstable.tailscale
+    unstable.claude-code
   ];
 
   # Partition manager needs a daemon to work.
