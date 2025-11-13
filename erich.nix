@@ -11,10 +11,6 @@
     modules/newsboat.nix
   ];
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "mbedtls-2.28.10"
-  ];
-
   nix = {
     gc = {
       automatic = true;
