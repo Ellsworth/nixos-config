@@ -177,6 +177,17 @@
       programs.bash.enable = true;
     };
 
+  programs.git = {
+    enable = true;
+    config = {
+      user.name = "Erich Ellsworth";
+      user.email = "erich@kg5key.com";
+      gpg.format = "ssh";
+      user.signingkey = "~/.ssh/id_ed25519";
+      commit.gpgsign = true;
+    };
+  };
+
   # Enable podman
   virtualisation = {
     containers.enable = true;

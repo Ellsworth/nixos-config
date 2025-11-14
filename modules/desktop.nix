@@ -53,6 +53,7 @@
     kdePackages.kleopatra
     kdePackages.dolphin
     kdePackages.plasma-vault
+    kdePackages.plasma-browser-integration
 
     # Pomoduro
     francis
