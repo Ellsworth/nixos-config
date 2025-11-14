@@ -66,6 +66,39 @@
     autoPrune.enable = true;
   };
 
+  systemd.services.tailscale-serve-protonbridge = {
+    description = "Expose ProtonMail Bridge IMAP/SMTP to Tailnet";
+    wantedBy = [ "multi-user.target" ];
+
+    after = [
+      "network-online.target"
+      "tailscaled.service"
+      "protonmail-bridge.service"
+    ];
+    requires = [
+      "tailscaled.service"
+      "protonmail-bridge.service"
+    ];
+
+    # Make `tailscale` available in $PATH for this unit
+    path = [ pkgs.tailscale ];
+
+    script = ''
+      set -eu
+
+      # IMAP: Tailnet 143 -> local 1143
+      tailscale serve tcp 143 127.0.0.1:1143 || true
+
+      # SMTP: Tailnet 587 -> local 1025
+      tailscale serve tcp 587 127.0.0.1:1025 || true
+    '';
+
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+    };
+  };
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
