@@ -27,10 +27,14 @@
   # Tailscale behavior
   services.tailscale.useRoutingFeatures = "server";
 
+  programs.gnupg.agent.enable = true;
+
   home-manager.users.erich =
     { pkgs, ... }:
     {
       programs.bash.enable = true;
+
+      programs.password-store.enable = true;
 
       # The state version is required and should stay at the version you
       # originally installed.
@@ -66,7 +70,17 @@
     autoPrune.enable = true;
   };
 
-  services.protonmail-bridge.enable = true;
+  services.protonmail-bridge = {
+    enable = true;
+    logLevel = "info";
+    package = pkgs.protonmail-bridge;
+
+    # Make sure Bridge can find `pass` and gpg
+    path = [
+      pkgs.pass
+      pkgs.gnupg
+    ];
+  };
 
   systemd.services.tailscale-serve-protonbridge = {
     description = "Expose ProtonMail Bridge IMAP/SMTP to Tailnet";
