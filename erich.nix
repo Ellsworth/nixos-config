@@ -113,6 +113,7 @@
     ncdu
     fastfetch
     distrobox
+    uv
   ];
 
   users.users.erich = {
@@ -165,14 +166,15 @@
       home.packages = with pkgs; [
         # Programming Languages
         gforth
-        uv
-
-        # Editors
-        helix
 
         # Tools
         newsboat
       ];
+
+      programs.helix = {
+        enable = true;
+        defaultEditor = true;
+      };
 
       programs.bash.enable = true;
     };
