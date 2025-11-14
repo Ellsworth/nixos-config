@@ -66,6 +66,8 @@
     autoPrune.enable = true;
   };
 
+  services.tailscale.enable = true;
+
   systemd.services.tailscale-serve-protonbridge = {
     description = "Expose ProtonMail Bridge IMAP/SMTP to Tailnet";
     wantedBy = [ "multi-user.target" ];
