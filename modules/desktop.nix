@@ -63,7 +63,7 @@
 
     # Misc apps
     wireshark
-    unstable.claude-code
+    obsidian
   ];
 
   # Partition manager needs a daemon to work.
