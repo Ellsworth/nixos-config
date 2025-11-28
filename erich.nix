@@ -114,6 +114,7 @@
     fastfetch
     distrobox
     uv
+    podman-compose
   ];
 
   users.users.erich = {
