@@ -54,9 +54,7 @@
     kdePackages.dolphin
     kdePackages.plasma-vault
     kdePackages.plasma-browser-integration
-
-    # Pomoduro
-    francis
+    kdePackages.francis
 
     # Remote desktop
     remmina
@@ -87,7 +85,7 @@
         vlc
 
         # Utilities
-        bitwarden
+        bitwarden-desktop
         firefox
         vesktop
         free42
