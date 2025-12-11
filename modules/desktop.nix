@@ -89,6 +89,7 @@
         firefox
         vesktop
         free42
+        plus42
         hexchat
 
         # Programming

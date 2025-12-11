@@ -1,52 +1,84 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
+
+  systemd.services.telegraf.path = [
+    "/run/wrappers"
+    pkgs.smartmontools
+    pkgs.nvme-cli
+  ];
+
   services.telegraf = {
     enable = true;
 
-    # Optional: point Telegraf to a file that contains INFLUX_TOKEN=...
+    # Token and other secrets loaded from .env
     environmentFiles = [ "/home/erich/nixos-config/.env" ];
 
-    # Telegraf configuration (TOML) in-line.
-    extraConfig = ''
-      [agent]
-        interval = "10s"
-        round_interval = true
-        flush_interval = "10s"
-        metric_batch_size = 5000
+    extraConfig = {
+      agent = {
+        interval = "300s";
+        round_interval = true;
+        flush_interval = "10s";
+        metric_batch_size = 1000;
+      };
 
-      [global_tags]
-        host = "${config.networking.hostName}"
-        env  = "prod"
+      global_tags = {
+        host = config.networking.hostName;
+        env = "prod";
+      };
 
-      [[inputs.cpu]]
-        percpu = true
-        totalcpu = true
-        report_active = true
-      [[inputs.mem]]
-      [[inputs.swap]]
-      [[inputs.disk]]
-        ignore_fs = ["tmpfs","devtmpfs","devfs","overlay","aufs","squashfs"]
-      [[inputs.diskio]]
-      [[inputs.net]]
-        interfaces = ["*"]
-      [[inputs.processes]]
-      [[inputs.system]]
+      inputs = {
+        cpu = [
+          {
+            percpu = true;
+            totalcpu = true;
+            report_active = true;
+          }
+        ];
 
-      # InfluxDB 2.x / 3.x via v2 write API
-      [[outputs.influxdb_v2]]
-        urls = ["https://INFLUX_HOST:8086"]
-        token = "$INFLUX_TOKEN"     # supplied via /run/secrets/influx.env
-        organization = "YOUR_ORG"
-        bucket = "system_metrics"
+        # Enable SMART monitoring (NVMe + SATA)
+        smart = [
+          {
+            path_smartctl = "/run/current-system/sw/bin/smartctl";
+            path_nvme = "/run/current-system/sw/bin/nvme";
+            enable_extensions = [ "auto-on" ];
+            use_sudo = true;
+            interval = "300s";
+            attributes = true;
+          }
+        ];
+      };
 
-      # Example local downsampling (optional):
-      # [[aggregators.basicstats]]
-      #   period = "1m"
-      #   drop_original = false
-      #   stats = ["mean","min","max","stdev","sum","count"]
-    '';
+      outputs = {
+        influxdb_v2 = [
+          {
+            urls = [ "$INFLUX_HOST" ];
+            token = "$INFLUX_TOKEN";
+            organization = "default";
+            bucket = "telegraf";
+          }
+        ];
+      };
+    };
   };
+
+  # Allow Telegraf to run smartctl without a password
+  security.sudo.extraRules = [
+    {
+      users = [ "telegraf" ];
+      commands = [
+        {
+          command = "/run/current-system/sw/bin/smartctl";
+          options = [ "NOPASSWD" ];
+        }
+      ];
+    }
+  ];
 
   # Ensure Telegraf is started
   systemd.services.telegraf.wantedBy = [ "multi-user.target" ];

@@ -8,15 +8,13 @@
     ../modules/desktop.nix
     ../modules/vm.nix
     ../modules/syncthing-games.nix
+    ../modules/telegraf.nix
   ];
 
   networking.hostName = "artemis";
 
   # Run latest Linux kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  # Add nvme module (?)
-  boot.initrd.kernelModules = [ "nvme" ];
 
   # NTFS Support
   boot.supportedFilesystems = [ "ntfs" ];
@@ -35,7 +33,7 @@
     };
   };
 
-  # For Lutris?
+  # For Vulkan: https://nixos.wiki/wiki/AMD_GPU
   hardware.graphics.enable32Bit = true;
 
   # List packages installed in system profile. To search, run:

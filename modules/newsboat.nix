@@ -161,7 +161,10 @@
             url = "https://blog.rongarret.info/feeds/posts/default";
             tags = [ "blog" ];
           }
-
+          {
+            url = "https://destevez.net/feed";
+            tags = [ "blog" ];
+          }
           # Random
           {
             url = "https://www.web3isgoinggreat.com/feed.xml";
