@@ -56,6 +56,10 @@
     kdePackages.plasma-browser-integration
     kdePackages.francis
 
+    # TXST VPN
+    openconnect
+    networkmanager-openconnect # Optional: for GUI integration
+
     # Remote desktop
     remmina
 

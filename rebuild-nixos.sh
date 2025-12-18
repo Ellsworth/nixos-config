@@ -67,5 +67,3 @@ popd
 # Collect garbage
 sudo nix-collect-garbage --delete-older-than 30d
 nix-collect-garbage --delete-older-than 30d
-
-nix profile history --profile /nix/var/nix/profiles/system
