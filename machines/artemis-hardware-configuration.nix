@@ -46,12 +46,6 @@
     ];
   };
 
-  fileSystems."/mnt/ddrive" = {
-    device = "/dev/disk/by-uuid/823dc236-a25c-4664-99d8-71cd2c585739";
-    fsType = "ext4";
-    options = [ "nofail" ];
-  };
-
   swapDevices = [
     { device = "/dev/disk/by-uuid/3f9cb9ca-4054-4dfa-9086-0d73dcfe5cc7"; }
   ];
