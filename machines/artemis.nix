@@ -36,6 +36,15 @@
   # For Vulkan: https://nixos.wiki/wiki/AMD_GPU
   hardware.graphics.enable32Bit = true;
 
+  hardware.graphics.extraPackages = with pkgs; [
+    rocmPackages.clr.icd
+  ];
+
+  systemd.tmpfiles.rules = [
+    "L+ /opt/rocm/hip - - - - ${pkgs.rocmPackages.clr}"
+    "L+ /opt/amdgpu - - - - ${pkgs.libdrm}"
+  ];
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -46,8 +55,11 @@
         xxd
       ];
     })
-    nvtopPackages.amd
     veracrypt
+
+    # GPU monitoring
+    nvtopPackages.amd
+    clinfo
   ];
 
   home-manager.users.erich =

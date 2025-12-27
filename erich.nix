@@ -74,13 +74,13 @@
     # Chrony NTP Service
     chrony = {
       enable = true;
-      servers = [
-        "pool.ntp.org"
-        "time.nist.gov"
-        "100.69.229.43"
-        "100.82.239.88"
-      ];
+
       extraConfig = ''
+        pool time.nist.gov maxsources 1
+        pool pool.ntp.org maxsources 1
+        peer ceres.tail3e456.ts.net iburst
+        peer artemis.tail3e456.ts.net iburst
+        peer apollo.tail3e456.ts.net iburst
         makestep 1 -1
         allow 100.0.0.0/8
       '';

@@ -52,7 +52,7 @@
     kdePackages.krdp
     kdePackages.kleopatra
     kdePackages.dolphin
-    kdePackages.plasma-vault
+    unstable.kdePackages.plasma-vault
     kdePackages.plasma-browser-integration
     kdePackages.francis
 
