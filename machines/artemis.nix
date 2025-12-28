@@ -2,6 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 { config, pkgs, ... }:
+
+let
+  unstable = import inputs.nixpkgs-unstable {
+    system = pkgs.system;
+    config.allowUnfree = true;
+  };
+in
 {
   imports = [
     ../erich.nix
@@ -33,13 +40,21 @@
     };
   };
 
-  # For Vulkan: https://nixos.wiki/wiki/AMD_GPU
-  hardware.graphics.enable32Bit = true;
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
 
-  hardware.graphics.extraPackages = with pkgs; [
-    rocmPackages.clr.icd
-  ];
-
+    # ROCm userspace MUST come from unstable
+    extraPackages = with unstable.rocmPackages; [
+      rocm-runtime
+      hip-runtime-amd
+      rocminfo
+      rocm-smi
+      clr            # HIP + OpenCL runtime
+      clr.icd
+    ];
+  };
+  
   systemd.tmpfiles.rules = [
     "L+ /opt/rocm/hip - - - - ${pkgs.rocmPackages.clr}"
     "L+ /opt/amdgpu - - - - ${pkgs.libdrm}"
