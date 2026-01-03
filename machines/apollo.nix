@@ -13,9 +13,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # RTC clock should be in UTC time.
-  time.hardwareClockInLocalTime = false;
-
   # Enable bolt daemon to manager Thunderbolt devices.
   services.hardware.bolt.enable = true;
 
@@ -27,19 +24,6 @@
   environment.systemPackages = with pkgs; [
     nvtopPackages.amd
   ];
-
-  services.power-profiles-daemon.enable = false;
-  services.auto-cpufreq.enable = true;
-  services.auto-cpufreq.settings = {
-    battery = {
-      governor = "powersave";
-      turbo = "never";
-    };
-    charger = {
-      governor = "performance";
-      turbo = "auto";
-    };
-  };
 
   home-manager.users.erich =
     { pkgs, ... }:
