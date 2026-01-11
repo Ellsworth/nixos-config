@@ -56,6 +56,9 @@
     kdePackages.plasma-browser-integration
     kdePackages.francis
 
+    # Agentic IDE
+    antigravity
+
     # TXST VPN
     openconnect
     networkmanager-openconnect # Optional: for GUI integration

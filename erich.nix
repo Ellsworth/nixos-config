@@ -9,6 +9,7 @@
   imports = [
     modules/ssh.nix
     modules/newsboat.nix
+    modules/home.nix
   ];
 
   nix = {
@@ -167,24 +168,7 @@
     ];
   };
 
-  home-manager.users.erich =
-    { pkgs, ... }:
-    {
-      home.packages = with pkgs; [
-        # Programming Languages
-        gforth
 
-        # Tools
-        newsboat
-      ];
-
-      programs.helix = {
-        enable = true;
-        defaultEditor = true;
-      };
-
-      programs.bash.enable = true;
-    };
 
   programs.git = {
     enable = true;
