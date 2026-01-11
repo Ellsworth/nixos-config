@@ -102,6 +102,7 @@
         # Programming
         octaveFull
         arduino-ide
+        gforth
 
         # Games
         prismlauncher

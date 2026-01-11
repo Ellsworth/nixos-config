@@ -13,11 +13,6 @@
       # originally installed.
       home.stateVersion = "23.11";
 
-      home.packages = with pkgs; [
-        # Programming Languages
-        gforth
-      ];
-
       programs.helix = {
         enable = true;
         defaultEditor = true;
