@@ -94,9 +94,6 @@
     powerOnBoot = true;
   };
 
-  # Monitor disk health
-  services.smartd.enable = true;
-
   # System-wide packages.
   environment.systemPackages = with pkgs; [
     # Required for custom NixOS build script to work.

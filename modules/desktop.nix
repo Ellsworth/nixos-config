@@ -81,6 +81,9 @@
   # Enable Flatpak
   services.flatpak.enable = true;
 
+  # Monitor disk health
+  services.smartd.enable = true;
+
   home-manager.users.erich =
     { pkgs, ... }:
     {
@@ -124,6 +127,7 @@
           usernamehw.errorlens
           charliermarsh.ruff
           ms-vscode-remote.remote-containers
+          elijah-potter.harper
         ];
       };
     };
