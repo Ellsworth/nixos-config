@@ -46,6 +46,17 @@
     ];
   };
 
+  # Patriot NVME 1TB
+  fileSystems."/mnt/games" = {
+    device = "/dev/disk/by-uuid/778e7160-661b-4235-85fe-b8ddbb1e061d";
+    fsType = "btrfs";
+    options = [
+      "nofail"
+      "compress=zstd" # Enables transparent zstd compression
+      "noatime" # Improves performance by not writing access times
+    ];
+  };
+
   swapDevices = [
     { device = "/dev/disk/by-uuid/3f9cb9ca-4054-4dfa-9086-0d73dcfe5cc7"; }
   ];
