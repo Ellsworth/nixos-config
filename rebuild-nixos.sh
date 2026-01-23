@@ -54,12 +54,17 @@ echo "nvd diff $old $new"
 nvd diff "$old" "$new"
 
 # Get current generation metadata
-current=$(nixos-rebuild list-generations | grep current)
+# Get current generation metadata
+current=$(nixos-rebuild list-generations | grep current || true)
 
 # Commit all changes with the generation metadata
 git add -A
-git commit -am "$hostname - $current"
-git push
+if ! git diff --staged --quiet; then
+    git commit -am "$hostname - $current"
+    git push
+else
+    echo "No changes to commit."
+fi
 
 # Back to where you were
 popd

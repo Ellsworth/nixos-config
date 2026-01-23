@@ -31,10 +31,6 @@
           hostname = "leap2.txstate.edu";
           proxyJump = "fire";
         };
-        "fire" = {
-          user = "erich";
-          hostname = "100.80.42.87";
-        };
         "backup" = {
           user = "erich";
           hostname = "162.251.13.122";
@@ -48,8 +44,8 @@
         };
         "hipe" = {
           user = "hipe6-thrc";
-          hostname = "100.100.102.43";
-          port = 48291;
+          hostname = "100.100.73.40";
+          port = 22;
         };
       };
     };
