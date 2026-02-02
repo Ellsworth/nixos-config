@@ -181,6 +181,7 @@
   # Enable podman
   virtualisation = {
     containers.enable = true;
+    incus.enable = true;
     podman = {
       enable = true;
       autoPrune.enable = true;
@@ -191,6 +192,9 @@
 
     oci-containers.backend = "podman";
   };
+
+  # For Incus / LXC
+  networking.nftables.enable = true;
 
   # Expose NTP server.
   networking.firewall.allowedTCPPorts = lib.mkAfter [
