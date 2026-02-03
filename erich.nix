@@ -197,10 +197,15 @@
   networking.firewall.allowedTCPPorts = lib.mkAfter [
     123
     3389
+
+    # Synergy 3
+    24800
   ];
   networking.firewall.allowedUDPPorts = lib.mkAfter [
     123
     3389
+
+    24800
   ];
 
   networking.nameservers = [
