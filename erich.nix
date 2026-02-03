@@ -130,6 +130,7 @@
       "dialout"
       "podman"
       "docker"
+      "incus-admin"
     ];
     packages = with pkgs; [ ];
   };
