@@ -69,6 +69,7 @@
     # Misc apps
     wireshark
     obsidian
+    chirp
   ];
 
   # Partition manager needs a daemon to work.
