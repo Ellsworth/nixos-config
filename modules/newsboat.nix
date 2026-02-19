@@ -165,6 +165,10 @@
             url = "https://destevez.net/feed";
             tags = [ "blog" ];
           }
+          {
+            url = "https://statusq.org/feed/";
+            tags = [ "blog" ];
+          }
           # Random
           {
             url = "https://www.web3isgoinggreat.com/feed.xml";

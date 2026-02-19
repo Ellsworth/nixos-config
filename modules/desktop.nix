@@ -104,7 +104,6 @@
         hexchat
 
         # Programming
-        octaveFull
         arduino-ide
         gforth
 
