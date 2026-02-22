@@ -119,6 +119,12 @@ in
       ];
     };
   };
+
+  # LXC Containers
+  virtualisation.incus.enable = true;
+  networking.nftables.enable = true;
+  networking.firewall.trustedInterfaces = [ "incusbr0" ];
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
