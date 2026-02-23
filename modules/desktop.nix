@@ -52,12 +52,12 @@
     kdePackages.krdp
     kdePackages.kleopatra
     kdePackages.dolphin
-    unstable.kdePackages.plasma-vault
+    kdePackages.plasma-vault
     kdePackages.plasma-browser-integration
     kdePackages.francis
 
     # Agentic IDE
-    antigravity
+    unstable.antigravity
 
     # TXST VPN
     openconnect
