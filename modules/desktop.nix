@@ -70,6 +70,7 @@
     wireshark
     obsidian
     chirp
+    blink
   ];
 
   # Partition manager needs a daemon to work.
