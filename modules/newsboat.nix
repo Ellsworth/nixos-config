@@ -169,6 +169,11 @@
             url = "https://statusq.org/feed/";
             tags = [ "blog" ];
           }
+          {
+            url = "https://bh1phl.github.io/index.xml";
+            tags = [ "blog" ];
+          }
+
           # Random
           {
             url = "https://www.web3isgoinggreat.com/feed.xml";
