@@ -103,6 +103,7 @@
         free42
         plus42
         hexchat
+        gpredict
 
         # Programming
         arduino-ide
