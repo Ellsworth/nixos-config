@@ -103,7 +103,6 @@
 
     # Rust-based replacements
     uutils-coreutils-noprefix
-    sudo-rs
 
     # System Utils.
     wget
@@ -166,7 +165,8 @@
     ];
   };
 
-
+  security.sudo.enable = false;
+  security.sudo-rs.enable = true;
 
   programs.git = {
     enable = true;
