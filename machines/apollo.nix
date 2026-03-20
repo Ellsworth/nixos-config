@@ -5,6 +5,7 @@
     ../modules/desktop.nix
     ../modules/remote-build-client.nix
     ../modules/vm.nix
+    ../modules/telegraf.nix
   ];
 
   networking.hostName = "apollo";
