@@ -166,7 +166,13 @@
   };
 
   security.sudo.enable = false;
-  security.sudo-rs.enable = true;
+  security.sudo-rs = {
+    enable = true;
+    extraConfig = ''
+      # Allow telegraf to run specific monitoring tools without a password
+      telegraf ALL=(ALL) NOPASSWD: /run/current-system/sw/bin/smartctl, /run/current-system/sw/bin/nvme
+    '';
+  };
 
   programs.git = {
     enable = true;
