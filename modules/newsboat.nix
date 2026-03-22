@@ -264,6 +264,9 @@
               "linux"
             ];
           }
+          {
+            url = "https://kagi.com/api/v1/smallweb/feed";
+          }
         ];
 
         extraConfig = ''
