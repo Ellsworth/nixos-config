@@ -41,38 +41,43 @@
           }
         ];
 
-        # Battery Monitoring (Numeric)
-        file = [
-          {
-            files = [
-              "/sys/class/power_supply/BAT1/capacity"
-              "/sys/class/power_supply/BAT1/charge_now"
-              "/sys/class/power_supply/BAT1/charge_full"
-              "/sys/class/power_supply/BAT1/current_now"
-              "/sys/class/power_supply/BAT1/voltage_now"
-              "/sys/class/power_supply/BAT1/cycle_count"
-            ];
-            data_format = "value";
-            data_type = "integer";
-            name_override = "battery_stats";
-            tags = {
-              battery = "BAT1";
-            };
-          }
-          # Battery Monitoring (Strings)
-          {
-            files = [
-              "/sys/class/power_supply/BAT1/status"
-              "/sys/class/power_supply/BAT1/capacity_level"
-            ];
-            data_format = "value";
-            data_type = "string";
-            name_override = "battery_info";
-            tags = {
-              battery = "BAT1";
-            };
-          }
-        ];
+        # Battery Monitoring (Mapped by property to avoid fields overwriting each other)
+        file =
+          map
+            (prop: {
+              files = [ "/sys/class/power_supply/BAT1/${prop}" ];
+              data_format = "value";
+              data_type = "integer";
+              name_override = "battery_stats";
+              tags = {
+                battery = "BAT1";
+                property = prop;
+              };
+            })
+            [
+              "capacity"
+              "charge_now"
+              "charge_full"
+              "current_now"
+              "voltage_now"
+              "cycle_count"
+            ]
+          ++
+            map
+              (prop: {
+                files = [ "/sys/class/power_supply/BAT1/${prop}" ];
+                data_format = "value";
+                data_type = "string";
+                name_override = "battery_info";
+                tags = {
+                  battery = "BAT1";
+                  property = prop;
+                };
+              })
+              [
+                "status"
+                "capacity_level"
+              ];
 
         # Enable SMART monitoring (NVMe + SATA)
         smart = [
