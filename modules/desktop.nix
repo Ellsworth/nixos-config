@@ -56,8 +56,9 @@
     kdePackages.plasma-browser-integration
     kdePackages.francis
 
-    # Agentic IDE
+    # Google Gemini
     unstable.antigravity
+    unstable.gemini-cli
 
     # TXST VPN
     openconnect
