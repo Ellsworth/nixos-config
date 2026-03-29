@@ -19,6 +19,7 @@
     virtio-win
     win-spice
     adwaita-icon-theme
+    virtiofsd
   ];
 
   # Manage the virtualisation services
@@ -32,5 +33,4 @@
     spiceUSBRedirection.enable = true;
   };
   services.spice-vdagentd.enable = true;
-
 }
