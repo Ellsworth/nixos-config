@@ -34,4 +34,7 @@
     spiceUSBRedirection.enable = true;
   };
   services.spice-vdagentd.enable = true;
+
+  # Setup bridge for VMs
+  networking.firewall.trustedInterfaces = [ "virbr0" ];
 }
