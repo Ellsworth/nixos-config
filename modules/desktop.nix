@@ -72,6 +72,7 @@
     obsidian
     chirp
     blink
+    firefox
   ];
 
   # Partition manager needs a daemon to work.
@@ -99,7 +100,6 @@
 
         # Utilities
         bitwarden-desktop
-        firefox
         vesktop
         free42
         plus42
