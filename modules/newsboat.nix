@@ -173,7 +173,10 @@
             url = "https://bh1phl.github.io/index.xml";
             tags = [ "blog" ];
           }
-
+          {
+            url = "https://eaw.app/feed.xml";
+            tags = [ "blog" ];
+          }
           # Random
           {
             url = "https://www.web3isgoinggreat.com/feed.xml";
