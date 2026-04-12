@@ -82,38 +82,32 @@
     ];
   };
 
-  systemd.services.tailscale-serve-protonbridge = {
-    description = "Expose ProtonMail Bridge IMAP/SMTP to Tailnet";
+  # Ensure socat is available
+  environment.systemPackages = [ pkgs.socat ];
+
+  systemd.services.protonmail-bridge-proxy = {
+    description = "Proxy Proton Mail Bridge to Tailscale interface";
+    after = [
+      "network.target"
+      "tailscaled.service"
+      "protonmail-bridge.service"
+    ];
     wantedBy = [ "multi-user.target" ];
 
-    after = [
-      "network-online.target"
-      "tailscaled.service"
-      "protonmail-bridge.service"
-    ];
-    requires = [
-      "tailscaled.service"
-      "protonmail-bridge.service"
-    ];
-
-    # Make `tailscale` available in $PATH for this unit
-    path = [ pkgs.tailscale ];
-
-    script = ''
-      set -eu
-
-      # IMAP: Tailnet 143 -> local 1143
-      tailscale serve tcp 143 127.0.0.1:1143 || true
-
-      # SMTP: Tailnet 587 -> local 1025
-      tailscale serve tcp 587 127.0.0.1:1025 || true
-    '';
-
     serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
+      Type = "simple";
+      ExecStartPre = "${pkgs.coreutils}/bin/sleep 5"; # Wait for tailscaled to fully settle
+      ExecStart = "${pkgs.bash}/bin/bash -c '\
+        ${pkgs.socat}/bin/socat TCP-LISTEN:1143,fork,reuseaddr,bind=100.82.239.88 TCP:127.0.0.1:1143 & \
+        ${pkgs.socat}/bin/socat TCP-LISTEN:1025,fork,reuseaddr,bind=100.82.239.88 TCP:127.0.0.1:1025 & \
+        wait'";
+      Restart = "always";
+      User = "erich"; # The user running the bridge
     };
   };
+
+  # Open the ports on the Tailscale interface specifically
+  networking.firewall.trustedInterfaces = [ "tailscale0" ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
