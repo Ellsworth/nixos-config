@@ -82,9 +82,6 @@
     ];
   };
 
-  # Ensure socat is available
-  environment.systemPackages = [ pkgs.socat ];
-
   systemd.services.protonmail-bridge-proxy = {
     description = "Proxy Proton Mail Bridge to Tailscale interface";
     after = [
@@ -94,15 +91,19 @@
     ];
     wantedBy = [ "multi-user.target" ];
 
+    # Use 'script' for multi-line bash commands.
+    # NixOS will wrap this in a shell script automatically.
+    script = ''
+      ${pkgs.socat}/bin/socat TCP-LISTEN:1143,fork,reuseaddr,bind=100.82.239.88 TCP:127.0.0.1:1143 &
+      ${pkgs.socat}/bin/socat TCP-LISTEN:1025,fork,reuseaddr,bind=100.82.239.88 TCP:127.0.0.1:1025 &
+      wait
+    '';
+
     serviceConfig = {
       Type = "simple";
-      ExecStartPre = "${pkgs.coreutils}/bin/sleep 5"; # Wait for tailscaled to fully settle
-      ExecStart = "${pkgs.bash}/bin/bash -c '\
-        ${pkgs.socat}/bin/socat TCP-LISTEN:1143,fork,reuseaddr,bind=100.82.239.88 TCP:127.0.0.1:1143 & \
-        ${pkgs.socat}/bin/socat TCP-LISTEN:1025,fork,reuseaddr,bind=100.82.239.88 TCP:127.0.0.1:1025 & \
-        wait'";
+      ExecStartPre = "${pkgs.coreutils}/bin/sleep 5";
       Restart = "always";
-      User = "erich"; # The user running the bridge
+      User = "erich";
     };
   };
 
