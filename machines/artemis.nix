@@ -26,7 +26,7 @@ in
   networking.hostName = "artemis";
 
   # Run latest Linux kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # NTFS Support
   boot.supportedFilesystems = [ "ntfs" ];
