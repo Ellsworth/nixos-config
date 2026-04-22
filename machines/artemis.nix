@@ -75,6 +75,10 @@ in
         xxd
       ];
     })
+
+    # Proton compatibility manager, used for Starcraft II
+    protonplus
+
     veracrypt
 
     # GPU monitoring
