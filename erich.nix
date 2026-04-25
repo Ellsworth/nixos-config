@@ -134,15 +134,6 @@
     packages = with pkgs; [ ];
   };
 
-  users.users.isabel = {
-    isNormalUser = true;
-    description = "Isabel Ellsworth";
-    extraGroups = [
-      "networkmanager"
-    ];
-    packages = with pkgs; [ ];
-  };
-
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
