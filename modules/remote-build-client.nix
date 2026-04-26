@@ -3,6 +3,7 @@
   nix.buildMachines = [
     {
       hostName = "artemis";
+      sshUser = "nix-ssh";
       systems = [
         "x86_64-linux"
         "aarch64-linux"
@@ -19,6 +20,7 @@
 
     {
       hostName = "ceres";
+      sshUser = "nix-ssh";
       systems = [
         "x86_64-linux"
         "aarch64-linux"
@@ -34,6 +36,11 @@
     }
   ];
   nix.distributedBuilds = true;
+
+  nix.settings.substituters = [
+    "ssh-ng://nix-ssh@artemis"
+    "ssh-ng://nix-ssh@ceres"
+  ];
   # optional, useful when the builder has a faster internet connection than yours
   # TODO: re-enable this.
   #nix.extraOptions = ''
