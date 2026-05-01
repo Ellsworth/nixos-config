@@ -31,7 +31,6 @@ in
   # AMD scaling driver
   boot.kernelParams = [ "amd_pstate=active" ];
   hardware.cpu.amd.ryzen-smu.enable = true;
-  services.lact.enable = true;
 
   # NTFS Support
   boot.supportedFilesystems = [ "ntfs" ];
