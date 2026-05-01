@@ -26,7 +26,11 @@ in
   networking.hostName = "artemis";
 
   # Run latest Linux kernel.
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  # AMD scaling driver
+  boot.kernelParams = [ "amd_pstate=active" ];
+  hardware.cpu.amd.ryzen-smu.enable = true;
 
   # NTFS Support
   boot.supportedFilesystems = [ "ntfs" ];
