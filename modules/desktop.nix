@@ -100,9 +100,8 @@
 
         # Utilities
         bitwarden-desktop
-        vesktop
+        legcord
         free42
-        plus42
         hexchat
         gpredict
 
@@ -155,6 +154,5 @@
     font-awesome
     atkinson-hyperlegible-mono
     atkinson-hyperlegible-next
-
   ];
 }
