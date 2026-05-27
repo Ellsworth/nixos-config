@@ -91,8 +91,6 @@
   home-manager.users.erich =
     { pkgs, ... }:
     {
-      nixpkgs.config.allowUnfree = true;
-
       home.packages = with pkgs; [
         # Music
         psst

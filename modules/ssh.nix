@@ -11,6 +11,7 @@ in
     { pkgs, ... }:
     {
       programs.ssh.enable = true;
+      programs.ssh.enableDefaultConfig = false;
       programs.ssh.matchBlocks = {
         vega = {
           hostname = "100.121.95.93";

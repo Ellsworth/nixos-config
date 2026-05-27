@@ -10,7 +10,7 @@
 
 let
   unstable = import inputs.nixpkgs-unstable {
-    system = pkgs.system;
+    system = pkgs.stdenv.hostPlatform.system;
     config.allowUnfree = true;
   };
 in
@@ -93,8 +93,6 @@ in
   home-manager.users.erich =
     { pkgs, ... }:
     {
-      nixpkgs.config.allowUnfree = true;
-
       home.packages = with pkgs; [
         (mumble.override { pulseSupport = true; })
         ryubing
@@ -118,7 +116,7 @@ in
   services.tailscale.useRoutingFeatures = "both";
 
   # Add photos folder
-  services.syncthing.folders = {
+  services.syncthing.settings.folders = {
     "erich-photo-library" = {
       path = "/mnt/games/PhotoLibrary";
       devices = [
