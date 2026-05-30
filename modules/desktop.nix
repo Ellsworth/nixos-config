@@ -75,8 +75,11 @@
     firefox
   ];
 
-  # Partition manager needs a daemon to work.
-  programs.partition-manager.enable = true;
+  # KDE related programs
+  programs = {
+    partition-manager.enable = true;
+    kdeconnect.enable = true;
+  };
 
   # Wireshark network analyzer
   programs.wireshark.enable = true;
