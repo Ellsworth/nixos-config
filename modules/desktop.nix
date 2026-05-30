@@ -97,7 +97,7 @@
         vlc
 
         # Utilities
-        bitwarden-desktop
+        #bitwarden-desktop
         legcord
         free42
         hexchat
@@ -122,12 +122,12 @@
       programs.vscode = {
         enable = true;
         profiles.default.extensions = with pkgs.vscode-extensions; [
-          rust-lang.rust-analyzer
-          yzhang.markdown-all-in-one
-          usernamehw.errorlens
-          charliermarsh.ruff
-          ms-vscode-remote.remote-containers
-          elijah-potter.harper
+          #rust-lang.rust-analyzer
+          #yzhang.markdown-all-in-one
+          #usernamehw.errorlens
+          #charliermarsh.ruff
+          #ms-vscode-remote.remote-containers
+          #elijah-potter.harper
         ];
       };
     };

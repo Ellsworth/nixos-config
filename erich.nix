@@ -99,7 +99,7 @@
   environment.systemPackages = with pkgs; [
     # Required for custom NixOS build script to work.
     git
-    nixfmt-rfc-style
+    nixfmt
     nvd
 
     # Rust-based replacements

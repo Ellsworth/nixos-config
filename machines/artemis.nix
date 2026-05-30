@@ -97,7 +97,7 @@ in
         (mumble.override { pulseSupport = true; })
         ryubing
         dolphin-emu
-        melonDS
+        melonds
       ];
 
       # The state version is required and should stay at the version you

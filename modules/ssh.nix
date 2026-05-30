@@ -12,7 +12,7 @@ in
     {
       programs.ssh.enable = true;
       programs.ssh.enableDefaultConfig = false;
-      programs.ssh.matchBlocks = {
+      programs.ssh.settings = {
         vega = {
           hostname = "100.121.95.93";
           user = "root";
