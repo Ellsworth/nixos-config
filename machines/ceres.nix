@@ -56,6 +56,25 @@
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
+  services.pihole-ftl = {
+    enable = true;
+    settings = {
+      # See <https://docs.pi-hole.net/ftldns/configfile/>
+
+      # External DNS Servers quad9 and cloudflare
+      dns.upstreams = [
+        "9.9.9.9"
+        "1.1.1.1"
+      ];
+    };
+
+  };
+
+  services.pihole-web = {
+    enable = true;
+    ports = [ "443s" ];
+  };
+
   # Ports
   networking.firewall.allowedTCPPorts = lib.mkAfter [ 53 ];
   networking.firewall.allowedUDPPorts = lib.mkAfter [ 53 ];
