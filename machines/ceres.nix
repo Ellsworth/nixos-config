@@ -66,6 +66,7 @@
         "9.9.9.9"
         "1.1.1.1"
       ];
+      dns.listeningMode = "ALL";
     };
 
     lists = [
