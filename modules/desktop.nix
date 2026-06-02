@@ -136,7 +136,7 @@
     };
 
   # Substitute the 'docker' command with 'podman'.
-  virtualisation.podman.dockerCompat = true;
+  #virtualisation.podman.dockerCompat = true;
 
   # Gamemode, use 'gamemoderun %command%' in Steam launch options
   programs.gamemode.enable = true;

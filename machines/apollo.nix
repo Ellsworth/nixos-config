@@ -26,6 +26,14 @@
     nvtopPackages.amd
   ];
 
+  # In /etc/nixos/configuration.nix
+  virtualisation.docker = {
+    enable = true;
+  };
+
+  # Optional: Add your user to the "docker" group to run docker without sudo
+  users.users.erich.extraGroups = [ "docker" ];
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
