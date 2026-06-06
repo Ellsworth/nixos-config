@@ -23,8 +23,13 @@ in
     ../modules/telegraf.nix
   ];
 
-  services.gpsd.enable = true;
-  services.gpsd.nowait = true;
+  services.gpsd = {
+    enable = true;
+    devices = [ "/dev/ttyUSB0" ];
+    # Ensure "-b" is NOT in extraArgs.
+    # By default, NixOS does not add -b unless specified, but check your configuration.
+    extraArgs = [ ];
+  };
 
   networking.hostName = "artemis";
 
