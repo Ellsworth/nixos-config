@@ -26,6 +26,7 @@ in
   services.gpsd = {
     enable = true;
     devices = [ "/dev/ttyUSB0" ];
+    readonly = false;
     # Ensure "-b" is NOT in extraArgs.
     # By default, NixOS does not add -b unless specified, but check your configuration.
     extraArgs = [ ];
