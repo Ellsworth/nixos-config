@@ -23,6 +23,9 @@ in
     ../modules/telegraf.nix
   ];
 
+  services.gpsd.enable = true;
+  services.gpsd.nowait = true;
+
   networking.hostName = "artemis";
 
   # Run latest Linux kernel.
