@@ -132,6 +132,7 @@
       "docker"
       "incus-admin"
     ];
+    linger = true;
     packages = with pkgs; [ ];
   };
 
