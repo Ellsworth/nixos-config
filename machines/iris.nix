@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   imports = [
@@ -15,8 +20,14 @@
   # Set your time zone.
   time.timeZone = "America/Chicago";
 
-  # Enable networking
-  networking.networkmanager.enable = true;
+  # Disable NetworkManager to prevent conflicts with systemd-networkd on this VPS
+  networking.networkmanager.enable = false;
+
+  # Force IPv6-only DNS nameservers instead of the global IPv4 ones in erich.nix
+  networking.nameservers = lib.mkForce [
+    "2606:4700:4700::1111" # Cloudflare IPv6
+    "2001:4860:4860::8888" # Google IPv6
+  ];
 
   # Networkd configuration for static/IPv6 setup
   networking.useNetworkd = true;
