@@ -1,121 +1,53 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    ../erich.nix
+  ];
 
   # Bootloader.
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/vda";
   boot.loader.grub.useOSProber = true;
 
-  networking.hostName = "iris"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
+  networking.hostName = "iris";
 
   # Set your time zone.
   time.timeZone = "America/Chicago";
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
+  # Enable networking
+  networking.networkmanager.enable = true;
 
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users."erich" = {
-    isNormalUser = true;
-    description = "Erich Ellsworth";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
-  };
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-  ];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
+  # Networkd configuration for static/IPv6 setup
   networking.useNetworkd = true;
-  networking.useDHCP = false; # Set to true if you still rely on DHCP for IPv4
+  networking.useDHCP = false;
 
   systemd.network.networks."10-ens3" = {
-  matchConfig.Name = "ens3";
-  
-  # Assign the IP as a single host /128 address
-   address = [ "2a11:6c7:2500:840d::2/128" ];
-   routes = [
-    # Explicit link-scoped host route to the gateway over ens3
-    {
-      Destination = "2a11:6c7:2500:840d::1/128";
-      Scope = "link";
-    } # Default internet route via the gateway, pinning your source IP
-    {
-      Gateway = "2a11:6c7:2500:840d::1";
-      PreferredSource = "2a11:6c7:2500:840d::2";
-    }
-  ];
+    matchConfig.Name = "ens3";
 
-  # Set up IPv6 DNS servers
-  networkConfig = {
-    DNS = [
-      "2606:4700:4700::1111" # Cloudflare
-      "2001:4860:4860::8888" # Google
+    # Assign the IP as a single host /128 address
+    address = [ "2a11:6c7:2500:840d::2/128" ];
+    routes = [
+      # Explicit link-scoped host route to the gateway over ens3
+      {
+        Destination = "2a11:6c7:2500:840d::1/128";
+        Scope = "link";
+      }
+      # Default internet route via the gateway, pinning your source IP
+      {
+        Gateway = "2a11:6c7:2500:840d::1";
+        PreferredSource = "2a11:6c7:2500:840d::2";
+      }
     ];
-   };
+
+    # Set up IPv6 DNS servers
+    networkConfig = {
+      DNS = [
+        "2606:4700:4700::1111" # Cloudflare
+        "2001:4860:4860::8888" # Google
+      ];
+    };
   };
-
-  services.tailscale.enable = true;
-
-  # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 22 ];
-  networking.firewall.allowedUDPPorts = [ 22 ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -124,5 +56,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "26.05"; # Did you read the comment?
-
 }

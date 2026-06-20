@@ -79,6 +79,20 @@
             }
           ];
         };
+
+        iris = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./machines/iris.nix
+            ./machines/iris-hardware-configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+            }
+          ];
+        };
       };
       # Build the Hermes SD image explicitly with:
       #   nix build .#packages.aarch64-linux.hermes-img
