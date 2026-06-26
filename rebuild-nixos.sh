@@ -40,11 +40,8 @@ hostname=$(hostname)
 # Get old system profile path
 old=$(readlink -f /nix/var/nix/profiles/system)
 
-# Rebuild with simplified error logging
-if ! sudo nixos-rebuild switch --flake ".#${hostname}" &>nixos-switch.log; then
-    grep --color error nixos-switch.log
-    false
-fi
+# Rebuild
+sudo nixos-rebuild switch --flake ".#${hostname}" &>nixos-switch.log
 
 # Get new system profile path
 new=$(readlink -f /nix/var/nix/profiles/system)
@@ -53,7 +50,6 @@ new=$(readlink -f /nix/var/nix/profiles/system)
 echo "nvd diff $old $new"
 nvd diff "$old" "$new"
 
-# Get current generation metadata
 # Get current generation metadata
 current=$(nixos-rebuild list-generations | grep current || true)
 

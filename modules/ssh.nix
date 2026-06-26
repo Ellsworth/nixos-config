@@ -4,6 +4,7 @@ let
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG3yEyI+ih4/rc4tNcXOImlUUCMJ1n/h6DpjXTBAyiL9 artemis"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICSVvYsapiP3wSXptz3D3y3VRtpB1SS8Os4Gfk5g4xaT ceres"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINgrQ68WfJgDpLPNCESP8ZuBpE13+C36Y1HVQ8u71bCT apollo"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ+dC835zM2HFylIcSTVUkS851ymrrqNgQ071lWzYNpH iris"
   ];
 in
 {
@@ -25,6 +26,9 @@ in
         };
         artemis = {
           hostname = "100.69.229.43";
+        };
+        iris = {
+          hostname = "100.111.229.5";
         };
         vesta = {
           user = "ellsworth";
