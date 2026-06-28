@@ -69,6 +69,18 @@ in
   };
   programs.ssh.setXAuthLocation = true;
 
+  programs.ssh.extraConfig = ''
+    Host artemis
+      HostName 100.69.229.43
+      ConnectTimeout 3
+      Port 22
+
+    Host ceres
+      HostName 100.82.239.88
+      ConnectTimeout 3
+      Port 22
+  '';
+
   # SSH keys
   users.users."erich".openssh.authorizedKeys.keys = myKeys;
 

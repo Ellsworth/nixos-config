@@ -55,6 +55,7 @@
     connect-timeout = 3;
     stalled-download-timeout = 5;
   };
+
   # optional, useful when the builder has a faster internet connection than yours
   # TODO: re-enable this.
   #nix.extraOptions = ''

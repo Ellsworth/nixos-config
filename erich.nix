@@ -51,6 +51,9 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnfreePredicate = _: true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "pnpm-10.29.2"
+  ];
   nixpkgs.overlays = [
     (final: prev: {
       unstable = import inputs.nixpkgs-unstable {
