@@ -101,8 +101,8 @@
 
         # Utilities
         #bitwarden-desktop
-        #legcord
-        vesktop
+        bitwarden-cli
+        legcord
         free42
         hexchat
         gpredict
