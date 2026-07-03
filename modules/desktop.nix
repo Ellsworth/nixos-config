@@ -132,7 +132,7 @@
           usernamehw.errorlens
           charliermarsh.ruff
           ms-vscode-remote.remote-containers
-          elijah-potter.harper
+          #elijah-potter.harper
           anthropic.claude-code
         ];
       };
