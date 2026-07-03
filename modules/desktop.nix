@@ -56,9 +56,10 @@
     kdePackages.plasma-browser-integration
     kdePackages.francis
 
-    # Google Gemini
+    # AI Tools
     unstable.antigravity
-    unstable.gemini-cli
+    unstable.claude-code
+    unstable.claude-monitor
 
     # TXST VPN
     openconnect
