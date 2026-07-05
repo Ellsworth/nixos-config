@@ -57,14 +57,7 @@
         system = final.stdenv.hostPlatform.system;
         inherit (final) config;
       };
-      legcord = prev.legcord.override {
-        pnpm_10_29_2 = prev.pnpm_10;
-      };
     })
-  ];
-
-  warnings = [
-    "Warning: Local override for legcord is active (using pnpm_10 instead of pnpm_10_29_2). Check if upstream PR #536306 is merged."
   ];
 
   # Run unpatched dynamic binaries on NixOS.
