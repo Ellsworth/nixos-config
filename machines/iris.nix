@@ -38,16 +38,21 @@
 
     # Assign the IP as a single host /128 address
     address = [ "2a11:6c7:2500:840d::2/128" ];
+
     routes = [
       # Explicit link-scoped host route to the gateway over ens3
       {
-        Destination = "2a11:6c7:2500:840d::1/128";
-        Scope = "link";
+        routeConfig = {
+          Destination = "2a11:6c7:2500:840d::1/128";
+          Scope = "link";
+        };
       }
       # Default internet route via the gateway, pinning your source IP
       {
-        Gateway = "2a11:6c7:2500:840d::1";
-        PreferredSource = "2a11:6c7:2500:840d::2";
+        routeConfig = {
+          Gateway = "2a11:6c7:2500:840d::1";
+          PreferredSource = "2a11:6c7:2500:840d::2";
+        };
       }
     ];
 
