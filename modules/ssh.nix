@@ -79,6 +79,16 @@ in
       HostName 100.82.239.88
       ConnectTimeout 3
       Port 22
+
+    Host apollo
+      HostName 100.127.227.54
+      ConnectTimeout 3
+      Port 22
+
+    Host iris
+      HostName 100.111.229.5
+      ConnectTimeout 3
+      Port 22
   '';
 
   # SSH keys
