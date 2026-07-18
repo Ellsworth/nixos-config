@@ -9,6 +9,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware";
+    deploy-rs = {
+      url = "github:serokell/deploy-rs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -17,6 +21,7 @@
       nixpkgs,
       home-manager,
       nixos-hardware,
+      deploy-rs,
       ...
     }:
     {
@@ -99,5 +104,15 @@
       packages.aarch64-linux = {
         hermes-img = self.nixosConfigurations.hermes.config.system.build.sdImage;
       };
+
+      deploy.nodes.apollo = {
+        hostname = "apollo";
+        profiles.system = {
+          user = "root";
+          path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.apollo;
+        };
+      };
+
+      checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
     };
 }

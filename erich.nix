@@ -119,6 +119,9 @@
 
     # System utils
     smartmontools
+
+    # Deploy tool
+    inputs.deploy-rs.packages.${pkgs.system}.deploy-rs
   ];
 
   users.users.erich = {
@@ -130,7 +133,6 @@
       "dialout"
       "podman"
       "docker"
-      "incus-admin"
     ];
     linger = true;
     packages = with pkgs; [ ];
@@ -200,7 +202,7 @@
 
     oci-containers.backend = "podman";
   };
-  
+
   # Expose NTP server.
   networking.firewall.allowedTCPPorts = lib.mkAfter [
     123

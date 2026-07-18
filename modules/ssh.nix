@@ -93,6 +93,7 @@ in
 
   # SSH keys
   users.users."erich".openssh.authorizedKeys.keys = myKeys;
+  users.users.root.openssh.authorizedKeys.keys = myKeys;
 
   nix.sshServe = {
     enable = true;
