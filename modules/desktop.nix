@@ -59,7 +59,6 @@
     # AI Tools
     unstable.antigravity
     unstable.claude-code
-    unstable.claude-monitor
 
     # TXST VPN
     openconnect
