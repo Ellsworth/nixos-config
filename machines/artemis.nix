@@ -21,6 +21,7 @@ in
     ../modules/vm.nix
     ../modules/syncthing-games.nix
     ../modules/telegraf.nix
+    ../modules/zram.nix
   ];
 
   services.gpsd = {

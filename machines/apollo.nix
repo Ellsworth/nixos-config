@@ -6,6 +6,7 @@
     ../modules/remote-build-client.nix
     ../modules/vm.nix
     ../modules/telegraf.nix
+    ../modules/zram.nix
   ];
 
   networking.hostName = "apollo";
