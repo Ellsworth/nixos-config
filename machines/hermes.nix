@@ -54,7 +54,7 @@
 
       # The state version is required and should stay at the version you
       # originally installed.
-      home.stateVersion = "25.05";
+      home.stateVersion = lib.mkForce "25.05";
     };
 
   virtualisation.oci-containers = {
