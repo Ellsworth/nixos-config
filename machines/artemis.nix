@@ -98,6 +98,9 @@ in
     # GPU monitoring
     nvtopPackages.amd
     clinfo
+
+    # Deploy tool
+    inputs.deploy-rs.packages.${pkgs.system}.deploy-rs
   ];
 
   home-manager.users.erich =

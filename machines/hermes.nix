@@ -10,7 +10,7 @@
     ../erich.nix
     ../modules/remote-build-client.nix
     ../modules/syncthing.nix
-    (modulesPath + "/installer/cd-dvd/sd-image.nix")
+    (modulesPath + "/installer/sd-card/sd-image-aarch64.nix")
   ];
 
   networking.hostName = "hermes";
@@ -70,9 +70,9 @@
     };
   };
 
+  image.fileName = "hermes-${config.system.nixos.label}.img";
   sdImage = {
     compressImage = false;
-    imageName = "hermes-${config.system.nixos.label}.img";
     # Build the SD image on demand with:
     #   nix build .#packages.aarch64-linux.hermes-img
   };

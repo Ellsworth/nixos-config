@@ -119,9 +119,6 @@
 
     # System utils
     smartmontools
-
-    # Deploy tool
-    inputs.deploy-rs.packages.${pkgs.system}.deploy-rs
   ];
 
   users.users.erich = {
