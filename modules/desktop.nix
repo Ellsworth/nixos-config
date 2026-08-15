@@ -57,7 +57,7 @@
     kdePackages.francis
 
     # AI Tools
-    unstable.antigravity
+    unstable.antigravity-ide
     unstable.claude-code
 
     # TXST VPN
