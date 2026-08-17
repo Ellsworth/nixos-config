@@ -100,7 +100,7 @@
         vlc
 
         # Utilities
-        #bitwarden-desktop
+        bitwarden-desktop
         bitwarden-cli
         legcord
         free42
@@ -119,7 +119,7 @@
         libreoffice-qt
         hunspell
         hunspellDicts.en_US
-        zotero
+        anki
       ];
       programs.bash.enable = true;
 
