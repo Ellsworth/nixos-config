@@ -58,7 +58,6 @@
 
     # AI Tools
     unstable.antigravity-ide
-    unstable.claude-code
 
     # TXST VPN
     openconnect
@@ -127,12 +126,9 @@
         enable = true;
         profiles.default.extensions = with pkgs.vscode-extensions; [
           rust-lang.rust-analyzer
-          #yzhang.markdown-all-in-one
           usernamehw.errorlens
           charliermarsh.ruff
           ms-vscode-remote.remote-containers
-          #elijah-potter.harper
-          anthropic.claude-code
         ];
       };
     };

@@ -177,6 +177,10 @@
             url = "https://eaw.app/feed.xml";
             tags = [ "blog" ];
           }
+          {
+            url = "https://surrealdev.com/feed";
+            tags = [ "blog" ];
+          }
           # Random
           {
             url = "https://www.web3isgoinggreat.com/feed.xml";
